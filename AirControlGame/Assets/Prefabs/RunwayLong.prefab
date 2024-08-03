@@ -456,6 +456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8076401422937275626}
+  - component: {fileID: 3537919026073279199}
   m_Layer: 0
   m_Name: RunwayLong
   m_TagString: Untagged
@@ -484,6 +485,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3537919026073279199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659611559713106535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279426d4836508a4a99bb551a8fb1e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  northRot: {x: 0, y: 0, z: 0, w: 0}
+  southRot: {x: 0, y: 0, z: 0, w: 0}
+  eastRot: {x: 0, y: 0, z: 0, w: 0}
+  westRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4829857296143030996
 GameObject:
   m_ObjectHideFlags: 0

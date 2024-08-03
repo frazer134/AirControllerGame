@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     public int planesLanded = 0;
     public GameObject score;
+    public GameObject WindDir;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +26,10 @@ public class UIManager : MonoBehaviour
     {
         planesLanded++;
         score.GetComponent<TextMeshProUGUI>().text = "Planes Landed: " + planesLanded;
+    }
+
+    public void UpdateWindDirection(string newText)
+    {
+        WindDir.GetComponent<TextMeshProUGUI>().text = newText;
     }
 }
