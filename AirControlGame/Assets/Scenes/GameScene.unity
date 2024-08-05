@@ -563,6 +563,10 @@ PrefabInstance:
       value: TakeoffPlane
       objectReference: {fileID: 0}
     - target: {fileID: 5155170223396312889, guid: 73e04ce75c780ea45a74b12ee9647e0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155170223396312889, guid: 73e04ce75c780ea45a74b12ee9647e0f, type: 3}
       propertyPath: m_TagString
       value: TakeoffPlane
       objectReference: {fileID: 0}

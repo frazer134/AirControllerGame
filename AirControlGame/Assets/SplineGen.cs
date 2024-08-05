@@ -99,6 +99,8 @@ public class SplineGen : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Collison Detection & Sequence for landing plane
+
+        /**
         if (TakeoffPlane == false)
         {
             if (collision.CompareTag("ApproachLong"))
@@ -180,6 +182,22 @@ public class SplineGen : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
+        }
+        **/
+
+        if(collision.CompareTag("ApproachLong"))
+        {
+            var runwayShell = collision.gameObject.transform.parent;
+            var runwayEnd = runwayShell.transform.Find("RunwayEnd");
+
+            var navPoints = new List<Vector3>();
+            navPoints.Add(gameObject.transform.position);
+            navPoints.Add(runwayEnd.transform.position);
+            var lSpline = SplineMaker.SplineGenerator(navPoints, null);
+
+            gameObject.GetComponent<SplineAnimate>().Container = lSpline;
+            gameObject.GetComponent<SplineAnimate>().Restart(false);
+            gameObject.GetComponent<SplineAnimate>().Play();
         }
     }
 }

@@ -31,13 +31,16 @@ namespace Assets.Scenes
             spline.SetTangentMode(TangentMode.AutoSmooth);
             //Debug.Log(spline);
 
-            nSpline.AddComponent<SplineExtrude>();
-            nSpline.GetComponent<MeshFilter>().mesh = defaultMesh;
-            nSpline.GetComponent<SplineExtrude>().Container = container;
-            nSpline.GetComponent<SplineExtrude>().Radius = 0.1f;
-            //nSpline.GetComponent<SplineExtrude>().RebuildOnSplineChange = true;
-            nSpline.GetComponent<SplineExtrude>().enabled = false;
-            nSpline.GetComponent<MeshRenderer>().enabled = false;
+            if (defaultMesh != null)
+            {
+                nSpline.AddComponent<SplineExtrude>();
+                nSpline.GetComponent<MeshFilter>().mesh = defaultMesh;
+                nSpline.GetComponent<SplineExtrude>().Container = container;
+                nSpline.GetComponent<SplineExtrude>().Radius = 0.1f;
+                //nSpline.GetComponent<SplineExtrude>().RebuildOnSplineChange = true;
+                nSpline.GetComponent<SplineExtrude>().enabled = false;
+                nSpline.GetComponent<MeshRenderer>().enabled = false;
+            }
 
             return container;
         }
