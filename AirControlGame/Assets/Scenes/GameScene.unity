@@ -1124,8 +1124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runwayList:
   - {fileID: 703682429}
-  minTime: 10
-  maxTime: 20
+  minTime: 100
+  maxTime: 200
   timePassed: 0
   uiCanvas: {fileID: 12740203}
 --- !u!4 &1700267178
@@ -1415,7 +1415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8076401422937275626, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.6170177
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8076401422937275626, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: m_LocalRotation.w

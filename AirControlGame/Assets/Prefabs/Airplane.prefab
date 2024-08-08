@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3683645977777493450}
   - component: {fileID: 1473315033627199208}
   - component: {fileID: 5128337187587945186}
+  - component: {fileID: 2783454232672991382}
   m_Layer: 0
   m_Name: Airplane
   m_TagString: Plane
@@ -80,6 +81,7 @@ MonoBehaviour:
   paused: 0
   LongLand: 0
   uiCanvas: {fileID: 0}
+  TakeoffPlane: 0
 --- !u!61 &1473315033627199208
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -152,6 +154,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &2783454232672991382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5155170223396312889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454cdb989f067b04f8c8020634b654ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  longLand: 0
+  landing: 0
 --- !u!1 &8142575663120200371
 GameObject:
   m_ObjectHideFlags: 0

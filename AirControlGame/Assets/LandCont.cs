@@ -38,7 +38,7 @@ public class LandCont : MonoBehaviour
         }
         else
         {
-            if(collision.CompareTag("ApproachLong")||collision.CompareTag("ShortLand"))
+            if(collision.CompareTag("ApproachLong")||collision.CompareTag("Approach"))
             {
                 LandPlane(collision);
             }
@@ -48,7 +48,7 @@ public class LandCont : MonoBehaviour
         {
             if(collision.CompareTag("RunwayEnd"))
             {
-
+                gameObject.GetComponent<SplineGen>().PlaneDestroyed();
             }
         }
     }

@@ -96,11 +96,12 @@ public class SplineGen : MonoBehaviour
         paused= false;
     }
 
+    /**
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Collison Detection & Sequence for landing plane
 
-        /**
+        
         if (TakeoffPlane == false)
         {
             if (collision.CompareTag("ApproachLong"))
@@ -183,7 +184,6 @@ public class SplineGen : MonoBehaviour
                 }
             }
         }
-        **/
 
         if(collision.CompareTag("ApproachLong"))
         {
@@ -200,4 +200,13 @@ public class SplineGen : MonoBehaviour
             gameObject.GetComponent<SplineAnimate>().Play();
         }
     }
+    **/
+
+    public void PlaneDestroyed()
+    {
+        MouseCont.pauseG -= PausePlane;
+        MouseCont.startG -= StartPlane;
+        uiCanvas.GetComponent<UIManager>().PlaneLanded();
+        Destroy(gameObject);
+;    }
 }
