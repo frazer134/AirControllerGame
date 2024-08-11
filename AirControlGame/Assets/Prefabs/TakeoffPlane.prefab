@@ -81,6 +81,7 @@ MonoBehaviour:
   paused: 0
   LongLand: 0
   uiCanvas: {fileID: 0}
+  TakeoffPlane: 0
 --- !u!61 &1473315033627199208
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
 --- !u!50 &5128337187587945186
 Rigidbody2D:

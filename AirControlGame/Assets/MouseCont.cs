@@ -15,6 +15,10 @@ public class MouseCont : MonoBehaviour
     public Material pathMat;
     public Mesh pathMesh;
 
+    public GameObject tPlane;
+    public GameObject takeoffQueue;
+    public bool grabbedPlane = false;
+
     public delegate void PauseGame();
     public static event PauseGame pauseG;
 
@@ -31,6 +35,16 @@ public class MouseCont : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(grabbedPlane == true)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit.collider != null)
+            {
+                var hitPoint = new Vector3(hit.point.x, hit.point.y, -2);
+                tPlane.transform.position = hitPoint;
+            }
+        }
+
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             RaycastHit2D hitP = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -43,6 +57,12 @@ public class MouseCont : MonoBehaviour
                 {
                     pauseG();
                 }
+            }
+            else if(hitP.collider.CompareTag("TakeoffQueue"))
+            {
+                tPlane = takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList[0];
+                grabbedPlane = true;
+                pauseG();
             }
         }
 
@@ -80,6 +100,19 @@ public class MouseCont : MonoBehaviour
             if(startG!=null)
             {
                 startG();
+            }
+            if (grabbedPlane == true)
+            {
+                RaycastHit2D hitP = Physics2D.Raycast(tPlane.transform.position, new Vector3(0,0,1));
+                //Debug.Log("Hit: " + hitP.collider.gameObject.name);
+                if (hitP.collider.CompareTag("Runway"))
+                {
+                    tPlane.GetComponent<SplineGen>().nSpline.Spline = hitP.collider.gameObject.transform.GetChild(0).GetComponent<Spline>();
+                    tPlane.GetComponent<SplineAnimate>().Container.Spline = hitP.collider.gameObject.transform.GetChild(0).GetComponent<Spline>();
+                    tPlane.GetComponent<SplineAnimate>().Play();
+                    grabbedPlane = false;
+                    startG();
+                }
             }
         }
 
