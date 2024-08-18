@@ -374,7 +374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -30}
+  m_LocalPosition: {x: 0, y: 0, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -400,7 +400,7 @@ MonoBehaviour:
   pathMat: {fileID: 0}
   pathMesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
   tPlane: {fileID: 0}
-  takeoffQueue: {fileID: 0}
+  takeoffQueue: {fileID: 704431645}
   grabbedPlane: 0
 --- !u!1 &619394800
 GameObject:
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 704431649}
   m_Layer: 0
   m_Name: TakeoffSpawn
-  m_TagString: Untagged
+  m_TagString: TakeoffQueue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -585,7 +585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704431645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.8, y: -15.9, z: -1}
+  m_LocalPosition: {x: -18.8, y: -15.9, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

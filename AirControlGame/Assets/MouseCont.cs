@@ -49,20 +49,25 @@ public class MouseCont : MonoBehaviour
         {
             RaycastHit2D hitP = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             //Debug.Log("Hit: " + hitP.collider.gameObject.name);
-            if (hitP.collider.CompareTag("Plane"))
+            if(hitP.collider.CompareTag("TakeoffQueue"))
             {
-                currentPlane = hitP.collider.gameObject;
-                splinePoints.Add(currentPlane.transform.position);
-                if(pauseG!=null)
+                Debug.Log("Queue Hit");
+                tPlane = takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList[0];
+                grabbedPlane = true;
+                if(pauseG !=null)
                 {
                     pauseG();
                 }
             }
-            else if(hitP.collider.CompareTag("TakeoffQueue"))
+            else if (hitP.collider.CompareTag("Plane"))
             {
-                tPlane = takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList[0];
-                grabbedPlane = true;
-                pauseG();
+                Debug.Log("Plane Hit");
+                currentPlane = hitP.collider.gameObject;
+                splinePoints.Add(currentPlane.transform.position);
+                if (pauseG != null)
+                {
+                    pauseG();
+                }
             }
         }
 
@@ -104,7 +109,7 @@ public class MouseCont : MonoBehaviour
             if (grabbedPlane == true)
             {
                 RaycastHit2D hitP = Physics2D.Raycast(tPlane.transform.position, new Vector3(0,0,1));
-                //Debug.Log("Hit: " + hitP.collider.gameObject.name);
+                Debug.Log("Hit: " + hitP.collider.gameObject.name);
                 if (hitP.collider.CompareTag("Runway"))
                 {
                     tPlane.GetComponent<SplineGen>().enabled = true;
@@ -151,6 +156,19 @@ public class MouseCont : MonoBehaviour
                     splineObj.GetComponent<MeshRenderer>().enabled = false;
 
                     Time.timeScale = 1f;
+                }
+            }
+        }
+
+        if(Input.GetKey(KeyCode.Mouse0))
+        {
+            if(tPlane != null)
+            {
+                if (grabbedPlane == true)
+                {
+                    RaycastHit2D hit5 = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    var mouseP = new Vector3(hit5.point.x, hit5.point.y, -2);
+                    tPlane.transform.position = mouseP;
                 }
             }
         }
