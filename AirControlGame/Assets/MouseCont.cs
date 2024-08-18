@@ -107,6 +107,8 @@ public class MouseCont : MonoBehaviour
                 //Debug.Log("Hit: " + hitP.collider.gameObject.name);
                 if (hitP.collider.CompareTag("Runway"))
                 {
+                    tPlane.GetComponent<SplineGen>().enabled = true;
+                    tPlane.GetComponent<SplineAnimate>().enabled = true;
                     tPlane.GetComponent<SplineGen>().nSpline.Spline = hitP.collider.gameObject.transform.GetChild(0).GetComponent<Spline>();
                     tPlane.GetComponent<SplineAnimate>().Container.Spline = hitP.collider.gameObject.transform.GetChild(0).GetComponent<Spline>();
                     tPlane.GetComponent<SplineAnimate>().Play();

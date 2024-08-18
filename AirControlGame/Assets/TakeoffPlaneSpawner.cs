@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.Splines;
 
 public class TakeoffPlaneSpawner : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class TakeoffPlaneSpawner : MonoBehaviour
     public void CreatePlane()
     {
         var nPlane = Instantiate(planeObj);
+        nPlane.GetComponent<SplineAnimate>().enabled = false;
         nPlane.GetComponent<SplineGen>().PausePlane();
         takeoffList.Add(planeObj);
         UpdateDisplay(nPlane);

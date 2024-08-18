@@ -11,6 +11,7 @@ TagManager:
   - ApproachLong
   - TackoffSpline
   - TakeoffPlane
+  - TakeoffQueue
   layers:
   - Default
   - TransparentFX
