@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Splines;
+using UnityEngine.U2D;
 
 public class MouseCont : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class MouseCont : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /**
         if(grabbedPlane == true)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -44,6 +46,7 @@ public class MouseCont : MonoBehaviour
                 tPlane.transform.position = hitPoint;
             }
         }
+        **/
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -51,12 +54,15 @@ public class MouseCont : MonoBehaviour
             //Debug.Log("Hit: " + hitP.collider.gameObject.name);
             if(hitP.collider.CompareTag("TakeoffQueue"))
             {
-                Debug.Log("Queue Hit");
-                tPlane = takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList[0];
-                grabbedPlane = true;
-                if(pauseG !=null)
+                if (grabbedPlane == false)
                 {
-                    pauseG();
+                    Debug.Log("Queue Hit");
+                    tPlane = takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList[0];
+                    grabbedPlane = true;
+                    if (pauseG != null)
+                    {
+                        pauseG();
+                    }
                 }
             }
             else if (hitP.collider.CompareTag("Plane"))
@@ -102,24 +108,24 @@ public class MouseCont : MonoBehaviour
 
         if(Input.GetKeyUp(KeyCode.Mouse0))
         {
-            if(startG!=null)
-            {
-                startG();
-            }
             if (grabbedPlane == true)
             {
                 RaycastHit2D hitP = Physics2D.Raycast(tPlane.transform.position, new Vector3(0,0,1));
                 Debug.Log("Hit: " + hitP.collider.gameObject.name);
                 if (hitP.collider.CompareTag("Runway"))
                 {
-                    tPlane.GetComponent<SplineGen>().enabled = true;
+                    tPlane.GetComponent<SplineGen>().nSpline.Spline = hitP.collider.gameObject.transform.GetChild(0).GetComponent<SplineContainer>().Spline;
+                    tPlane.GetComponent<SplineAnimate>().Container.Spline = hitP.collider.gameObject.transform.GetChild(0).GetComponent<SplineContainer>().Splines[0];
                     tPlane.GetComponent<SplineAnimate>().enabled = true;
-                    tPlane.GetComponent<SplineGen>().nSpline.Spline = hitP.collider.gameObject.transform.GetChild(0).GetComponent<Spline>();
-                    tPlane.GetComponent<SplineAnimate>().Container.Spline = hitP.collider.gameObject.transform.GetChild(0).GetComponent<Spline>();
+                    tPlane.GetComponent<SplineGen>().enabled = true;
                     tPlane.GetComponent<SplineAnimate>().Play();
                     grabbedPlane = false;
-                    startG();
+                    tPlane = null;
                 }
+            }
+            if (startG != null)
+            {
+                startG();
             }
         }
 
@@ -160,22 +166,20 @@ public class MouseCont : MonoBehaviour
             }
         }
 
-        if(Input.GetKey(KeyCode.Mouse0))
+        if (tPlane != null)
         {
-            if(tPlane != null)
+            if (Input.GetKey(KeyCode.Mouse0))
             {
-                if (grabbedPlane == true)
+                if (tPlane != null)
                 {
-                    RaycastHit2D hit5 = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                    var mouseP = new Vector3(hit5.point.x, hit5.point.y, -2);
-                    tPlane.transform.position = mouseP;
+                    if (grabbedPlane == true)
+                    {
+                        RaycastHit2D hit5 = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                        var mouseP = new Vector3(hit5.point.x, hit5.point.y, -2);
+                        tPlane.transform.position = mouseP;
+                    }
                 }
             }
         }
-    }
-
-    public void PauseTest()
-    {
-        Debug.Log("Game Paused");
     }
 }
