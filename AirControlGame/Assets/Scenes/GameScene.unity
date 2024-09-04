@@ -1400,12 +1400,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 10347974578742283, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 10347974578742283, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: m_Splines.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 124067314849404302, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 373652420023806078, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829438856848901529, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3537919026073279199, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: eastRot.w
@@ -1451,11 +1463,23 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5289430294663336421, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5464601796265060701, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6082959435626763500, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6101464721103054297, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6459847684132085981, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}

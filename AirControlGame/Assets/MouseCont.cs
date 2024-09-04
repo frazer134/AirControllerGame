@@ -114,16 +114,28 @@ public class MouseCont : MonoBehaviour
                 Debug.Log("Hit: " + hitP.collider.gameObject.name);
                 if (hitP.collider.CompareTag("Runway"))
                 {
-                    tPlane.GetComponent<SplineGen>().nSpline.Spline = hitP.collider.gameObject.transform.GetChild(0).GetComponent<SplineContainer>().Spline;
-                    tPlane.GetComponent<SplineAnimate>().Container.Spline = hitP.collider.gameObject.transform.GetChild(0).GetComponent<SplineContainer>().Splines[0];
-                    tPlane.GetComponent<SplineAnimate>().enabled = true;
+                    Debug.Log(hitP.collider.gameObject.transform.parent.GetChild(0).gameObject);
+                    var animator = tPlane.GetComponent<SplineAnimate>();
+                    animator.enabled = true;
+                    tPlane.GetComponent<SplineAnimate>().Container = hitP.collider.gameObject.transform.parent.GetChild(0).gameObject.GetComponent<SplineContainer>();
+
                     tPlane.GetComponent<SplineGen>().enabled = true;
+                    tPlane.GetComponent<SplineGen>().nSpline = hitP.collider.gameObject.transform.parent.GetChild(0).gameObject.GetComponent<SplineContainer>();
+                    Debug.Log("SplineGen Success");
+
                     tPlane.GetComponent<SplineAnimate>().Play();
+                    //tPlane.GetComponent<SplineAnimate>().enabled = true;
+                    Debug.Log("SplineAnimPLay Success");
                     grabbedPlane = false;
                     tPlane = null;
+
+                    if(startG != null)
+                    {
+                        startG();
+                    }
                 }
             }
-            if (startG != null)
+            else if (startG != null)
             {
                 startG();
             }
@@ -174,6 +186,7 @@ public class MouseCont : MonoBehaviour
                 {
                     if (grabbedPlane == true)
                     {
+                        //Debug.Log("Plane Follow Mouse");
                         RaycastHit2D hit5 = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
                         var mouseP = new Vector3(hit5.point.x, hit5.point.y, -2);
                         tPlane.transform.position = mouseP;

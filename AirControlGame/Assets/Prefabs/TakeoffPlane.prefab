@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2758067695889809500}
-  - component: {fileID: 4635379752175312838}
   - component: {fileID: 3683645977777493450}
   - component: {fileID: 1473315033627199208}
   - component: {fileID: 5128337187587945186}
-  - component: {fileID: 7899403610387421760}
+  - component: {fileID: -8158610933092388375}
   m_Layer: 0
   m_Name: TakeoffPlane
   m_TagString: Plane
@@ -28,38 +27,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5155170223396312889}
-  m_LocalRotation: {x: 0, y: -1.0000001, z: -0, w: 0}
-  m_LocalPosition: {x: -14.743457, y: 0.9623432, z: -2}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: -14.085602, y: 1.7898822, z: -2}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 195003566476029796}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4635379752175312838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5155170223396312889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a074d529cf945029ef7cf40540c9df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_LoopMode: 0
-  m_Method: 1
-  m_Duration: 0.3788
-  m_MaxSpeed: 2
-  m_EasingMode: 0
-  m_AlignmentMode: 1
-  m_ObjectForwardAxis: 0
-  m_ObjectUpAxis: 1
-  m_StartOffset: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!114 &3683645977777493450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +43,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5155170223396312889}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d97aa7b4f35a744dbc1269fc77d3b65, type: 3}
   m_Name: 
@@ -154,21 +130,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &7899403610387421760
+--- !u!114 &-8158610933092388375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5155170223396312889}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47272c7c96a41e645ab90567aeac20cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 29a074d529cf945029ef7cf40540c9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeoffS1: {fileID: 0}
-  takeoffS2: {fileID: 0}
-  takeoff: 0
+  m_Target: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_LoopMode: 0
+  m_Method: 1
+  m_Duration: 3.6499999
+  m_MaxSpeed: 2
+  m_EasingMode: 0
+  m_AlignmentMode: 1
+  m_ObjectForwardAxis: 0
+  m_ObjectUpAxis: 1
+  m_StartOffset: 0
 --- !u!1 &8142575663120200371
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,8 @@ public class TakeoffPlaneSpawner : MonoBehaviour
         var nPlane = Instantiate(planeObj);
         nPlane.GetComponent<SplineAnimate>().enabled = false;
         nPlane.GetComponent<SplineGen>().PausePlane();
-        takeoffList.Add(planeObj);
+        nPlane.GetComponent<SplineGen>().enabled = false;
+        takeoffList.Add(nPlane);
         UpdateDisplay(nPlane);
     }
 

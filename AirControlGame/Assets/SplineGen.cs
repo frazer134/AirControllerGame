@@ -59,6 +59,7 @@ public class SplineGen : MonoBehaviour
 
         nSpline = SplineMaker.SplineGenerator(planePath, defaultMesh);
 
+        gameObject.GetComponent<SplineAnimate>().enabled = true;
         gameObject.GetComponent<SplineAnimate>().Container = nSpline;
         gameObject.GetComponent<SplineAnimate>().Restart(false);
         gameObject.GetComponent<SplineAnimate>().Play();
