@@ -28,12 +28,13 @@ public class TakeoffPlaneSpawner : MonoBehaviour
         }
         else
         {
-            CreatePlane();
+            int goal = Random.Range(0,4);
+            CreatePlane(goal);
             timePassed = 0f;
         }
     }
 
-    public void CreatePlane()
+    public void CreatePlane(int goal)
     {
         var nPlane = Instantiate(planeObj);
         nPlane.GetComponent<SplineAnimate>().enabled = false;
@@ -41,6 +42,8 @@ public class TakeoffPlaneSpawner : MonoBehaviour
         nPlane.GetComponent<SplineGen>().enabled = false;
         takeoffList.Add(nPlane);
         UpdateDisplay(nPlane);
+
+        nPlane.GetComponent<TakeoffCont>().goal = goal;
     }
 
     public void UpdateDisplay(GameObject nPlane)

@@ -56,7 +56,7 @@ public class MouseCont : MonoBehaviour
             {
                 if (grabbedPlane == false)
                 {
-                    Debug.Log("Queue Hit");
+                    //Debug.Log("Queue Hit");
                     tPlane = takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList[0];
                     grabbedPlane = true;
                     if (pauseG != null)
@@ -67,7 +67,7 @@ public class MouseCont : MonoBehaviour
             }
             else if (hitP.collider.CompareTag("Plane"))
             {
-                Debug.Log("Plane Hit");
+                //Debug.Log("Plane Hit");
                 currentPlane = hitP.collider.gameObject;
                 splinePoints.Add(currentPlane.transform.position);
                 if (pauseG != null)
@@ -111,21 +111,20 @@ public class MouseCont : MonoBehaviour
             if (grabbedPlane == true)
             {
                 RaycastHit2D hitP = Physics2D.Raycast(tPlane.transform.position, new Vector3(0,0,1));
-                Debug.Log("Hit: " + hitP.collider.gameObject.name);
+                //Debug.Log("Hit: " + hitP.collider.gameObject.name);
                 if (hitP.collider.CompareTag("Runway"))
                 {
-                    Debug.Log(hitP.collider.gameObject.transform.parent.GetChild(0).gameObject);
+                    //Debug.Log(hitP.collider.gameObject.transform.parent.GetChild(0).gameObject);
                     var animator = tPlane.GetComponent<SplineAnimate>();
                     animator.enabled = true;
                     tPlane.GetComponent<SplineAnimate>().Container = hitP.collider.gameObject.transform.parent.GetChild(0).gameObject.GetComponent<SplineContainer>();
 
                     tPlane.GetComponent<SplineGen>().enabled = true;
                     tPlane.GetComponent<SplineGen>().nSpline = hitP.collider.gameObject.transform.parent.GetChild(0).gameObject.GetComponent<SplineContainer>();
-                    Debug.Log("SplineGen Success");
+                    //Debug.Log("SplineGen Success");
 
                     tPlane.GetComponent<SplineAnimate>().Play();
-                    //tPlane.GetComponent<SplineAnimate>().enabled = true;
-                    Debug.Log("SplineAnimPLay Success");
+                    //Debug.Log("SplineAnimPLay Success");
                     grabbedPlane = false;
                     tPlane = null;
 

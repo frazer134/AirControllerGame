@@ -6,10 +6,13 @@ using UnityEngine.Splines;
 public class TakeoffCont : MonoBehaviour
 {
 
-    public SplineContainer takeoffS1;
-    public SplineContainer takeoffS2;
+    //public SplineContainer takeoffS1;
+    //public SplineContainer takeoffS2;
 
-    public bool takeoff = false;
+    //public bool takeoff = false;
+
+    public int goal;
+    public GameObject Arrow;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,7 @@ public class TakeoffCont : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /**
         if(takeoff == true)
         {
             StartTakeoff();
@@ -45,14 +49,57 @@ public class TakeoffCont : MonoBehaviour
                 }
             }
         }
+        **/
+
+        if (goal == 0)
+        {
+            Arrow.transform.rotation = Quaternion.LookRotation(-Camera.main.transform.up);
+        }
+        else if (goal == 1)
+        {
+            Arrow.transform.rotation = Quaternion.LookRotation(-Camera.main.transform.forward);
+        }
+        else if(goal == 2)
+        {
+            Arrow.transform.rotation = Quaternion.LookRotation(Camera.main.transform.up);
+        }
+        else if(goal == 3)
+        {
+            Arrow.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
+        }
     }
 
+    /**
     public void StartTakeoff()
     {
         if(takeoffS1 != null && takeoffS2 != null)
         {
             gameObject.GetComponent<SplineAnimate>().Container = takeoffS1;
             gameObject.GetComponent<SplineAnimate>().Play();
+        }
+        
+    }
+    **/
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var name = collision.gameObject.name;
+
+        if (name == "North" && goal == 0)
+        {
+            Debug.Log("Takeoff Score");
+        }
+        else if(name == "East" && goal == 1)
+        {
+            Debug.Log("Takeoff Score");
+        }
+        else if(name == "South" && goal == 2)
+        {
+            Debug.Log("Takeoff Score");
+        }
+        else if(name == "West" && goal == 3)
+        {
+            Debug.Log("Takeoff Score");
         }
     }
 }
