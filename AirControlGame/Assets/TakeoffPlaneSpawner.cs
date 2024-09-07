@@ -13,6 +13,8 @@ public class TakeoffPlaneSpawner : MonoBehaviour
 
     public float timePassed = 0f;
     public float spawnTime =10f;
+
+    public GameObject uiCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,7 @@ public class TakeoffPlaneSpawner : MonoBehaviour
         nPlane.GetComponent<SplineAnimate>().enabled = false;
         nPlane.GetComponent<SplineGen>().PausePlane();
         nPlane.GetComponent<SplineGen>().enabled = false;
+        nPlane.GetComponent<SplineGen>().uiCanvas = uiCanvas;
         takeoffList.Add(nPlane);
         UpdateDisplay(nPlane);
 

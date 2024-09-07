@@ -525,6 +525,7 @@ MonoBehaviour:
   offset: 2
   timePassed: 0
   spawnTime: 5
+  uiCanvas: {fileID: 12740202}
 --- !u!212 &704431647
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -585,7 +586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704431645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.8, y: -15.9, z: -4}
+  m_LocalPosition: {x: -18.8, y: -17.84, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -624,7 +625,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 5.110712, y: 0.056785583}
+  m_Offset: {x: 5.110712, y: 1.5535989}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -635,7 +636,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.278576, y: 5.8221474}
+  m_Size: {x: 15.278576, y: 2.8285208}
   m_EdgeRadius: 0
 --- !u!1 &727751576
 GameObject:
@@ -749,7 +750,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 105.9, y: 0}
+  m_AnchoredPosition: {x: 111.08, y: -36.6}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040855104
@@ -983,7 +984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176.09, y: 0}
+  m_AnchoredPosition: {x: 182.1, y: -68.4}
   m_SizeDelta: {x: 341.37, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1206267071
@@ -997,7 +998,7 @@ GameObject:
   - component: {fileID: 1206267073}
   - component: {fileID: 1206267072}
   m_Layer: 0
-  m_Name: EastGoal
+  m_Name: WestGoal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1774,7 +1775,7 @@ GameObject:
   - component: {fileID: 2047117313}
   - component: {fileID: 2047117312}
   m_Layer: 0
-  m_Name: WestGoal
+  m_Name: EastGoal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

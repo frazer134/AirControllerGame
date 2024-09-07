@@ -81,25 +81,29 @@ public class TakeoffCont : MonoBehaviour
     }
     **/
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         var name = collision.gameObject.name;
 
-        if (name == "North" && goal == 0)
+        if (name == "NorthGoal" && goal == 0)
         {
             Debug.Log("Takeoff Score");
+            gameObject.GetComponent<SplineGen>().PlaneDestroyed();
         }
-        else if(name == "East" && goal == 1)
+        else if(name == "EastGoal" && goal == 1)
         {
             Debug.Log("Takeoff Score");
+            gameObject.GetComponent<SplineGen>().PlaneDestroyed();
         }
-        else if(name == "South" && goal == 2)
+        else if(name == "SouthGoal" && goal == 2)
         {
             Debug.Log("Takeoff Score");
+            gameObject.GetComponent<SplineGen>().PlaneDestroyed();
         }
-        else if(name == "West" && goal == 3)
+        else if(name == "WestGoal" && goal == 3)
         {
             Debug.Log("Takeoff Score");
+            gameObject.GetComponent<SplineGen>().PlaneDestroyed();
         }
     }
 }
