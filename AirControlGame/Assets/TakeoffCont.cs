@@ -53,19 +53,19 @@ public class TakeoffCont : MonoBehaviour
 
         if (goal == 0)
         {
-            Arrow.transform.rotation = Quaternion.LookRotation(-Camera.main.transform.up);
+            Arrow.transform.rotation = Quaternion.LookRotation(Camera.main.transform.up, -Camera.main.transform.forward);
         }
         else if (goal == 1)
         {
-            Arrow.transform.rotation = Quaternion.LookRotation(-Camera.main.transform.forward);
+            Arrow.transform.rotation = Quaternion.LookRotation(Camera.main.transform.right, -Camera.main.transform.forward);
         }
         else if(goal == 2)
         {
-            Arrow.transform.rotation = Quaternion.LookRotation(Camera.main.transform.up);
+            Arrow.transform.rotation = Quaternion.LookRotation(-Camera.main.transform.up, -Camera.main.transform.forward);
         }
         else if(goal == 3)
         {
-            Arrow.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
+            Arrow.transform.rotation = Quaternion.LookRotation(-Camera.main.transform.right, -Camera.main.transform.forward);
         }
     }
 
