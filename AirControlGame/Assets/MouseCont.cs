@@ -67,12 +67,32 @@ public class MouseCont : MonoBehaviour
             }
             else if (hitP.collider.CompareTag("Plane"))
             {
-                //Debug.Log("Plane Hit");
-                currentPlane = hitP.collider.gameObject;
-                splinePoints.Add(currentPlane.transform.position);
-                if (pauseG != null)
+                if (hitP.collider.gameObject.GetComponent<TakeoffCont>() != null)
                 {
-                    pauseG();
+                    if (hitP.collider.gameObject.GetComponent<TakeoffCont>().onGoal == true && hitP.collider.gameObject.GetComponent<TakeoffCont>().inAir == true)
+                    {
+                        hitP.collider.gameObject.GetComponent<TakeoffCont>().PlaneSCore();
+                    }
+                    else
+                    {
+                        //Debug.Log("Plane Hit");
+                        currentPlane = hitP.collider.gameObject;
+                        splinePoints.Add(currentPlane.transform.position);
+                        if (pauseG != null)
+                        {
+                            pauseG();
+                        }
+                    }
+                }
+                else
+                {
+                    //Debug.Log("Plane Hit");
+                    currentPlane = hitP.collider.gameObject;
+                    splinePoints.Add(currentPlane.transform.position);
+                    if (pauseG != null)
+                    {
+                        pauseG();
+                    }
                 }
             }
         }
@@ -128,6 +148,7 @@ public class MouseCont : MonoBehaviour
                     grabbedPlane = false;
                     takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList.Remove(tPlane);
                     takeoffQueue.GetComponent<TakeoffPlaneSpawner>().UpdateDisplay();
+                    tPlane.GetComponent<TakeoffCont>().inAir = true;
                     tPlane = null;
 
                     if(startG != null)

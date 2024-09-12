@@ -14,6 +14,10 @@ public class TakeoffCont : MonoBehaviour
     public int goal;
     public GameObject Arrow;
 
+    public bool inAir = false;
+    public bool onGoal = false;
+    public GameObject radioFlash;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,22 +92,47 @@ public class TakeoffCont : MonoBehaviour
         if (name == "NorthGoal" && goal == 0)
         {
             Debug.Log("Takeoff Score");
-            gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+            //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+            onGoal = true;
+            if (inAir == true)
+            {
+                radioFlash.SetActive(true);
+            }
         }
         else if(name == "EastGoal" && goal == 1)
         {
             Debug.Log("Takeoff Score");
-            gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+            //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+            onGoal = true;
+            if (inAir == true)
+            {
+                radioFlash.SetActive(true);
+            }
         }
         else if(name == "SouthGoal" && goal == 2)
         {
             Debug.Log("Takeoff Score");
-            gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+            //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+            onGoal = true;
+            if (inAir == true)
+            {
+                radioFlash.SetActive(true);
+            }
         }
         else if(name == "WestGoal" && goal == 3)
         {
             Debug.Log("Takeoff Score");
-            gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+            //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+            onGoal = true;
+            if (inAir == true)
+            {
+                radioFlash.SetActive(true);
+            }
         }
+    }
+
+    public void PlaneSCore()
+    {
+        gameObject.GetComponent<SplineGen>().PlaneDestroyed();
     }
 }

@@ -44,12 +44,12 @@ public class TakeoffPlaneSpawner : MonoBehaviour
         nPlane.GetComponent<SplineGen>().enabled = false;
         nPlane.GetComponent<SplineGen>().uiCanvas = uiCanvas;
         takeoffList.Add(nPlane);
-        //AddDisplay(nPlane);
         UpdateDisplay();
 
         nPlane.GetComponent<TakeoffCont>().goal = goal;
     }
 
+    /**
     public void AddDisplay(GameObject nPlane)
     {
         for(int i =0; i <= takeoffList.Count; i++)
@@ -60,6 +60,7 @@ public class TakeoffPlaneSpawner : MonoBehaviour
             nPlane.transform.position = pos;
 ;        }
     }
+    **/
 
     public void UpdateDisplay()
     {
