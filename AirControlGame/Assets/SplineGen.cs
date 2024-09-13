@@ -102,7 +102,7 @@ public class SplineGen : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Plane"))
         {
-
+            Debug.Log("Plane Collision");
         }
     }
 

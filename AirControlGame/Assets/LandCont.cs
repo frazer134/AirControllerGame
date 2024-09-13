@@ -21,7 +21,18 @@ public class LandCont : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (landing == true)
+        {
+            //if(collision.CompareTag("RunwayEnd"))
+            //{
+            //    gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+            //}
+            Debug.Log("Nor Time: " + gameObject.GetComponent<SplineAnimate>().NormalizedTime);
+            if (gameObject.GetComponent<SplineAnimate>().NormalizedTime == 1)
+            {
+                gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -43,14 +54,6 @@ public class LandCont : MonoBehaviour
             if(collision.CompareTag("ApproachLong")||collision.CompareTag("Approach"))
             {
                 LandPlane(collision);
-            }
-        }
-
-        if(landing == true)
-        {
-            if(collision.CompareTag("RunwayEnd"))
-            {
-                gameObject.GetComponent<SplineGen>().PlaneDestroyed();
             }
         }
     }
