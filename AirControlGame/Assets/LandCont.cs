@@ -10,6 +10,8 @@ public class LandCont : MonoBehaviour
     public bool longLand = false;
     public bool landing = false;
 
+    public bool inAir = true;
+
     // Start is called before the first frame update
     void Start()
     {

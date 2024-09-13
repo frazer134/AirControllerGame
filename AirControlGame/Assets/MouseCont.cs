@@ -156,6 +156,12 @@ public class MouseCont : MonoBehaviour
                         startG();
                     }
                 }
+                else
+                {
+                    grabbedPlane = false;
+                    tPlane = null;
+                    takeoffQueue.GetComponent<TakeoffPlaneSpawner>().UpdateDisplay();
+                }
             }
             else if (startG != null)
             {

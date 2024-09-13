@@ -1735,6 +1735,66 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].Position.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].Position.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].TangentIn.z
+      value: -1.171
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].TangentIn.z
+      value: -1.171
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].TangentOut.z
+      value: 1.171
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].TangentOut.z
+      value: 1.171
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].Rotation.value.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].Rotation.value.y
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].Rotation.value.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].Rotation.value.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].Rotation.value.y
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].Rotation.value.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_MetaData.Array.data[0].m_DistanceToInterpolation.Array.data[0].T
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314813880832090539, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_Splines.Array.data[0].m_MetaData.Array.data[0].m_DistanceToInterpolation.Array.data[0].Distance
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382172053444681080, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 3537919026073279199, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: eastRot.w
       value: 0.857917
@@ -1813,7 +1873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8076401422937275626, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8076401422937275626, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: m_LocalRotation.w

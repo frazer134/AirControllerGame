@@ -27,6 +27,7 @@ public class SplineGen : MonoBehaviour
 
     public bool TakeoffPlane = false;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -97,111 +98,13 @@ public class SplineGen : MonoBehaviour
         paused= false;
     }
 
-    /**
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Collison Detection & Sequence for landing plane
-
-        
-        if (TakeoffPlane == false)
+        if(collision.gameObject.CompareTag("Plane"))
         {
-            if (collision.CompareTag("ApproachLong"))
-            {
-                if (onApproach == false)
-                {
-                    var runwayS = collision.gameObject.GetComponent<SplineContainer>().Spline;
-                    var start = runwayS.ToArray()[1];
-                    var end = runwayS.ToArray()[0];
-                    var plane = (gameObject.transform.position) - collision.gameObject.transform.position;
 
-                    var offset = (end.Position.x - plane.x) / (end.Position.x - start.Position.x);
-
-                    onApproach = true;
-
-                    gameObject.GetComponent<SplineAnimate>().StartOffset = offset;
-                    gameObject.GetComponent<SplineAnimate>().Container = collision.gameObject.GetComponent<SplineContainer>();
-                    gameObject.GetComponent<SplineAnimate>().Restart(false);
-                    gameObject.GetComponent<SplineAnimate>().Play();
-                }
-            }
-
-            if (collision.CompareTag("Approach"))
-            {
-                if (onApproach == false)
-                {
-                    if (LongLand == false)
-                    {
-                        var runwayS = collision.gameObject.GetComponent<SplineContainer>().Spline;
-                        var start = runwayS.ToArray()[1];
-                        var end = runwayS.ToArray()[0];
-                        var plane = (gameObject.transform.position) - collision.gameObject.transform.position;
-
-                        var offset = (end.Position.x - plane.x) / (end.Position.x - start.Position.x);
-
-                        onApproach = true;
-
-                        gameObject.GetComponent<SplineAnimate>().StartOffset = offset;
-                        gameObject.GetComponent<SplineAnimate>().Container = collision.gameObject.GetComponent<SplineContainer>();
-                        gameObject.GetComponent<SplineAnimate>().Restart(false);
-                        gameObject.GetComponent<SplineAnimate>().Play();
-                    }
-                    else
-                    {
-                        print("Long Land Needed");
-                    }
-                }
-                else if (onApproach == true)
-                {
-                    gameObject.GetComponent<SplineAnimate>().StartOffset = 0;
-                    gameObject.GetComponent<SplineAnimate>().Container = collision.gameObject.GetComponent<SplineContainer>();
-                    gameObject.GetComponent<SplineAnimate>().Restart(true);
-                    gameObject.GetComponent<SplineAnimate>().Play();
-                }
-            }
-
-            if (collision.CompareTag("Runway"))
-            {
-                if (onApproach == true && landed == false)
-                {
-                    gameObject.GetComponent<SplineAnimate>().StartOffset = 0;
-                    gameObject.GetComponent<SplineAnimate>().Container = collision.gameObject.GetComponent<SplineContainer>();
-                    gameObject.GetComponent<SplineAnimate>().Restart(true);
-                    //gameObject.GetComponent<SplineAnimate>().Play();
-                    //gameObject.GetComponent<SplineAnimate>().Play();
-
-                    landed = true;
-                }
-            }
-
-            if (collision.CompareTag("RunwayEnd"))
-            {
-                if (landed)
-                {
-                    Debug.Log("Destroy");
-                    MouseCont.pauseG -= PausePlane;
-                    MouseCont.startG -= StartPlane;
-                    uiCanvas.GetComponent<UIManager>().PlaneLanded();
-                    Destroy(gameObject);
-                }
-            }
-        }
-
-        if(collision.CompareTag("ApproachLong"))
-        {
-            var runwayShell = collision.gameObject.transform.parent;
-            var runwayEnd = runwayShell.transform.Find("RunwayEnd");
-
-            var navPoints = new List<Vector3>();
-            navPoints.Add(gameObject.transform.position);
-            navPoints.Add(runwayEnd.transform.position);
-            var lSpline = SplineMaker.SplineGenerator(navPoints, null);
-
-            gameObject.GetComponent<SplineAnimate>().Container = lSpline;
-            gameObject.GetComponent<SplineAnimate>().Restart(false);
-            gameObject.GetComponent<SplineAnimate>().Play();
         }
     }
-    **/
 
     public void PlaneDestroyed()
     {
