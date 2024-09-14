@@ -148,7 +148,7 @@ public class MouseCont : MonoBehaviour
                     grabbedPlane = false;
                     takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList.Remove(tPlane);
                     takeoffQueue.GetComponent<TakeoffPlaneSpawner>().UpdateDisplay();
-                    tPlane.GetComponent<TakeoffCont>().inAir = true;
+                    //tPlane.GetComponent<TakeoffCont>().inAir = true;
                     tPlane = null;
 
                     if(startG != null)

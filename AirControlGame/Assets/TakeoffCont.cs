@@ -27,33 +27,6 @@ public class TakeoffCont : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /**
-        if(takeoff == true)
-        {
-            StartTakeoff();
-        }
-
-        if (gameObject.GetComponent<SplineAnimate>().Container != null)
-        {
-            if (gameObject.GetComponent<SplineAnimate>().Container == takeoffS1)
-            {
-                if (gameObject.GetComponent<SplineAnimate>().NormalizedTime >= 1)
-                {
-                    gameObject.GetComponent<SplineGen>().nSpline = takeoffS2;
-                    gameObject.GetComponent<SplineAnimate>().Container = takeoffS2;
-                    gameObject.GetComponent<SplineAnimate>().Play();
-                }
-            }
-
-            if (gameObject.GetComponent<SplineAnimate>().Container == takeoffS2)
-            {
-                if (gameObject.GetComponent<SplineAnimate>().NormalizedTime >= 1)
-                {
-                    takeoff = false;
-                }
-            }
-        }
-        **/
 
         if (goal == 0)
         {
@@ -71,19 +44,18 @@ public class TakeoffCont : MonoBehaviour
         {
             Arrow.transform.rotation = Quaternion.LookRotation(-Camera.main.transform.right, -Camera.main.transform.forward);
         }
-    }
 
-    /**
-    public void StartTakeoff()
-    {
-        if(takeoffS1 != null && takeoffS2 != null)
+        if(inAir == false && gameObject.GetComponent<SplineGen>().nSpline != null)
         {
-            gameObject.GetComponent<SplineAnimate>().Container = takeoffS1;
-            gameObject.GetComponent<SplineAnimate>().Play();
+            if(gameObject.GetComponent<SplineAnimate>().NormalizedTime == 1)
+            {
+                inAir = true;
+                gameObject.GetComponent<SplineGen>().inAir = true;
+                radioFlash.SetActive(true);
+                StartCoroutine("InAirFlash");
+            }
         }
-        
     }
-    **/
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -142,5 +114,11 @@ public class TakeoffCont : MonoBehaviour
     public void PlaneSCore()
     {
         gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+    }
+
+    IEnumerator InAirFlash()
+    {
+        yield return new WaitForSeconds(1);
+        radioFlash.SetActive(false);
     }
 }

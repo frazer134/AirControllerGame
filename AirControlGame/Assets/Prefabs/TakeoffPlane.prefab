@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goal: 0
   Arrow: {fileID: 3566306954198840251}
+  inAir: 0
   onGoal: 0
   radioFlash: {fileID: 7056250784626352508}
 --- !u!1 &5884044660029404451
@@ -340,7 +341,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 4b0ca01a93df0904e976ec18e93cf2ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

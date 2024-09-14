@@ -27,6 +27,8 @@ public class SplineGen : MonoBehaviour
 
     public bool TakeoffPlane = false;
 
+    public bool inAir = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -102,7 +104,10 @@ public class SplineGen : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Plane"))
         {
-            Debug.Log("Plane Collision");
+            if (inAir == true && collision.gameObject.GetComponent<SplineGen>().inAir == true)
+            {
+                Debug.Log("Plane Collision");
+            }
         }
     }
 

@@ -62,6 +62,7 @@ public class LandingPlaneSpawn : MonoBehaviour
         {
             var nPlane = Instantiate(plane);
             nPlane.GetComponent<SplineGen>().uiCanvas= canvasUI;
+            nPlane.GetComponent<SplineGen>().inAir = true;
             nPlane.GetComponent<LandCont>().longLand = true;
             nPlane.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = longP;
             nPlane.transform.GetChild(0).transform.localScale = new Vector3(0.03f, 0.03f, 0.03f);
@@ -73,6 +74,7 @@ public class LandingPlaneSpawn : MonoBehaviour
         {
             var nPlane = Instantiate(plane);
             nPlane.GetComponent<SplineGen>().uiCanvas = canvasUI;
+            nPlane.GetComponent<SplineGen>().inAir = true;
             nPlane.GetComponent<LandCont>().longLand = false;
             nPlane.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = shortP;
             nPlane.transform.GetChild(0).transform.localScale = new Vector3(0.03f, 0.03f, 0.03f);
