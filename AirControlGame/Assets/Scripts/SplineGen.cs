@@ -134,6 +134,11 @@ public class SplineGen : MonoBehaviour
         MouseCont.pauseG -= PausePlane;
         MouseCont.startG -= StartPlane;
         uiCanvas.GetComponent<UIManager>().PlaneLanded();
+        Destroy(nSpline.gameObject);
+        if(gameObject.GetComponent<SplineAnimate>().Container != null)
+        {
+            Destroy(gameObject.GetComponent<SplineAnimate>().Container.gameObject);
+        }
         Destroy(gameObject);
 ;    }
 }

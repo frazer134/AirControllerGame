@@ -23,11 +23,6 @@ public class LandCont : MonoBehaviour
     {
         if (landing == true)
         {
-            //if(collision.CompareTag("RunwayEnd"))
-            //{
-            //    gameObject.GetComponent<SplineGen>().PlaneDestroyed();
-            //}
-            //Debug.Log("Nor Time: " + gameObject.GetComponent<SplineAnimate>().NormalizedTime);
             if (gameObject.GetComponent<SplineAnimate>().NormalizedTime == 1)
             {
                 gameObject.GetComponent<SplineGen>().PlaneDestroyed();
@@ -42,7 +37,10 @@ public class LandCont : MonoBehaviour
         {
             if (collision.CompareTag("ApproachLong"))
             {
-                LandPlane(collision);
+                if (landing == false)
+                {
+                    LandPlane(collision);
+                }
             }
             else
             {
@@ -53,7 +51,10 @@ public class LandCont : MonoBehaviour
         {
             if(collision.CompareTag("ApproachLong")||collision.CompareTag("Approach"))
             {
-                LandPlane(collision);
+                if (landing == false)
+                {
+                    LandPlane(collision);
+                }
             }
         }
     }

@@ -14,6 +14,8 @@ public class CameraCont : MonoBehaviour
     public float zoomTime = 3f;
     public float cameraZoom = 3f;
 
+    public GameObject uiCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,5 +52,7 @@ public class CameraCont : MonoBehaviour
             yield return null;
         }
         gameObject.transform.position = zoomPos;
+        var button = uiCanvas.transform.GetChild(2);
+        button.gameObject.SetActive(true);
     }
 }
