@@ -141,6 +141,7 @@ public class MouseCont : MonoBehaviour
 
                     tPlane.GetComponent<SplineGen>().enabled = true;
                     tPlane.GetComponent<SplineGen>().nSpline = hitP.collider.gameObject.transform.parent.GetChild(0).gameObject.GetComponent<SplineContainer>();
+                    tPlane.GetComponent<SplineGen>().started = true;
                     //Debug.Log("SplineGen Success");
 
                     tPlane.GetComponent<SplineAnimate>().Play();
@@ -161,6 +162,10 @@ public class MouseCont : MonoBehaviour
                     grabbedPlane = false;
                     tPlane = null;
                     takeoffQueue.GetComponent<TakeoffPlaneSpawner>().UpdateDisplay();
+                    if(startG != null)
+                    {
+                        startG();
+                    }
                 }
             }
             else if (startG != null)
@@ -221,6 +226,14 @@ public class MouseCont : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void StopGame()
+    {
+        if(pauseG!= null)
+        {
+            pauseG();
         }
     }
 }

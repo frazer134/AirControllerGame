@@ -27,7 +27,7 @@ public class LandCont : MonoBehaviour
             //{
             //    gameObject.GetComponent<SplineGen>().PlaneDestroyed();
             //}
-            Debug.Log("Nor Time: " + gameObject.GetComponent<SplineAnimate>().NormalizedTime);
+            //Debug.Log("Nor Time: " + gameObject.GetComponent<SplineAnimate>().NormalizedTime);
             if (gameObject.GetComponent<SplineAnimate>().NormalizedTime == 1)
             {
                 gameObject.GetComponent<SplineGen>().PlaneDestroyed();

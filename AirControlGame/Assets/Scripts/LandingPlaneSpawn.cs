@@ -17,41 +17,47 @@ public class LandingPlaneSpawn : MonoBehaviour
     public GameObject canvasUI;
 
     public SplineContainer startSpline;
+
+    public bool gameP = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        MouseCont.pauseG += PauseSpawn;
+        MouseCont.startG += StartSpawn;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(time > minTime)
+        if (gameP == false)
         {
-            if(Random.Range(0,10) == 7)
+            if (time > minTime)
             {
-                SpawnPlane();
-                //var nPlane = Instantiate(plane);
-                //nPlane.GetComponent<SplineAnimate>().Container = startSpline;
-                //nPlane.GetComponent<SplineAnimate>().Play();
-                //time = 0;
-            }
-            else if(time > maxTime)
-            {
-                SpawnPlane();
-                //var nPlane = Instantiate(plane);
-                //nPlane.GetComponent<SplineAnimate>().Container = startSpline;
-                //nPlane.GetComponent<SplineAnimate>().Play();
-                //time = 0;
+                if (Random.Range(0, 10) == 7)
+                {
+                    SpawnPlane();
+                    //var nPlane = Instantiate(plane);
+                    //nPlane.GetComponent<SplineAnimate>().Container = startSpline;
+                    //nPlane.GetComponent<SplineAnimate>().Play();
+                    //time = 0;
+                }
+                else if (time > maxTime)
+                {
+                    SpawnPlane();
+                    //var nPlane = Instantiate(plane);
+                    //nPlane.GetComponent<SplineAnimate>().Container = startSpline;
+                    //nPlane.GetComponent<SplineAnimate>().Play();
+                    //time = 0;
+                }
+                else
+                {
+                    time = time + Time.deltaTime;
+                }
             }
             else
             {
                 time = time + Time.deltaTime;
             }
-        }
-        else
-        {
-            time = time + Time.deltaTime;
         }
     }
 
@@ -63,6 +69,7 @@ public class LandingPlaneSpawn : MonoBehaviour
             var nPlane = Instantiate(plane);
             nPlane.GetComponent<SplineGen>().uiCanvas= canvasUI;
             nPlane.GetComponent<SplineGen>().inAir = true;
+            nPlane.GetComponent<SplineGen>().started = true;
             nPlane.GetComponent<LandCont>().longLand = true;
             nPlane.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = longP;
             nPlane.transform.GetChild(0).transform.localScale = new Vector3(0.03f, 0.03f, 0.03f);
@@ -75,6 +82,7 @@ public class LandingPlaneSpawn : MonoBehaviour
             var nPlane = Instantiate(plane);
             nPlane.GetComponent<SplineGen>().uiCanvas = canvasUI;
             nPlane.GetComponent<SplineGen>().inAir = true;
+            nPlane.GetComponent<SplineGen>().started = true;
             nPlane.GetComponent<LandCont>().longLand = false;
             nPlane.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = shortP;
             nPlane.transform.GetChild(0).transform.localScale = new Vector3(0.03f, 0.03f, 0.03f);
@@ -82,5 +90,14 @@ public class LandingPlaneSpawn : MonoBehaviour
             nPlane.GetComponent<SplineAnimate>().Play();
             time = 0;
         }
+    }
+    public void PauseSpawn()
+    {
+        gameP = true;
+    }
+
+    public void StartSpawn()
+    {
+        gameP = false;
     }
 }

@@ -15,24 +15,30 @@ public class TakeoffPlaneSpawner : MonoBehaviour
     public float spawnTime =10f;
 
     public GameObject uiCanvas;
+
+    public bool gameP = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        MouseCont.pauseG += PauseSpawn;
+        MouseCont.startG += StartSpawn;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timePassed < spawnTime)
+        if (gameP == false)
         {
-            timePassed = timePassed + Time.deltaTime;
-        }
-        else
-        {
-            int goal = Random.Range(0,4);
-            CreatePlane(goal);
-            timePassed = 0f;
+            if (timePassed < spawnTime)
+            {
+                timePassed = timePassed + Time.deltaTime;
+            }
+            else
+            {
+                int goal = Random.Range(0, 4);
+                CreatePlane(goal);
+                timePassed = 0f;
+            }
         }
     }
 
@@ -71,5 +77,15 @@ public class TakeoffPlaneSpawner : MonoBehaviour
             pos = pos + posOffset;
             takeoffList[i].transform.position = pos;
         }
+    }
+
+    public void PauseSpawn()
+    {
+        gameP = true;
+    }
+
+    public void StartSpawn()
+    {
+        gameP = false;
     }
 }

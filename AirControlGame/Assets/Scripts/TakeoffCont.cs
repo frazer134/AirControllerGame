@@ -51,6 +51,7 @@ public class TakeoffCont : MonoBehaviour
             {
                 inAir = true;
                 gameObject.GetComponent<SplineGen>().inAir = true;
+                gameObject.GetComponent<SplineGen>().paused = false;
                 radioFlash.SetActive(true);
                 StartCoroutine("InAirFlash");
             }
@@ -63,7 +64,7 @@ public class TakeoffCont : MonoBehaviour
 
         if (name == "NorthGoal" && goal == 0)
         {
-            Debug.Log("Takeoff Score");
+            //Debug.Log("Takeoff Score");
             //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
             onGoal = true;
             if (inAir == true)
@@ -73,7 +74,7 @@ public class TakeoffCont : MonoBehaviour
         }
         else if(name == "EastGoal" && goal == 1)
         {
-            Debug.Log("Takeoff Score");
+            //Debug.Log("Takeoff Score");
             //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
             onGoal = true;
             if (inAir == true)
@@ -83,7 +84,7 @@ public class TakeoffCont : MonoBehaviour
         }
         else if(name == "SouthGoal" && goal == 2)
         {
-            Debug.Log("Takeoff Score");
+            //Debug.Log("Takeoff Score");
             //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
             onGoal = true;
             if (inAir == true)
@@ -93,7 +94,7 @@ public class TakeoffCont : MonoBehaviour
         }
         else if(name == "WestGoal" && goal == 3)
         {
-            Debug.Log("Takeoff Score");
+            //Debug.Log("Takeoff Score");
             //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
             onGoal = true;
             if (inAir == true)

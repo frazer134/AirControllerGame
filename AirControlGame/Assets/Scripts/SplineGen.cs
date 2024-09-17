@@ -29,6 +29,11 @@ public class SplineGen : MonoBehaviour
 
     public bool inAir = false;
 
+    public bool started = false;
+
+    //public delegate void PauseGame();
+    //public static event PauseGame pauseG;
+
 
     // Start is called before the first frame update
     void Start()
@@ -89,7 +94,7 @@ public class SplineGen : MonoBehaviour
 
     public void PausePlane()
     {
-        Debug.Log("Plane Stopped");
+        //Debug.Log("Plane Stopped");
         gameObject.GetComponent<SplineAnimate>().Pause();
         paused= true;
     }
@@ -104,9 +109,22 @@ public class SplineGen : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Plane"))
         {
-            if (inAir == true && collision.gameObject.GetComponent<SplineGen>().inAir == true)
+            if (started == true && collision.gameObject.GetComponent<SplineGen>().started == true)
             {
-                Debug.Log("Plane Collision");
+                if (inAir == true && collision.gameObject.GetComponent<SplineGen>().inAir == true)
+                {
+                    Debug.Log("Plane Collision");
+                    var camera = GameObject.Find("Main Camera");
+                    camera.GetComponent<MouseCont>().StopGame();
+                    camera.GetComponent<CameraCont>().EndGame(gameObject);
+                }
+                else if (inAir == false && collision.gameObject.GetComponent<SplineGen>().inAir == false)
+                {
+                    Debug.Log("Plane Collision");
+                    var camera = GameObject.Find("MainCamera");
+                    camera.GetComponent<MouseCont>().StopGame();
+                    camera.GetComponent<CameraCont>().EndGame(gameObject);
+                }
             }
         }
     }
