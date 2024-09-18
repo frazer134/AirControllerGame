@@ -1,3 +1,4 @@
+using Assets.Scenes;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
@@ -134,15 +135,21 @@ public class MouseCont : MonoBehaviour
                 //Debug.Log("Hit: " + hitP.collider.gameObject.name);
                 if (hitP.collider.CompareTag("Runway"))
                 {
-                    //Debug.Log(hitP.collider.gameObject.transform.parent.GetChild(0).gameObject);
+                    var runway = hitP.collider.gameObject.transform.parent;
                     var animator = tPlane.GetComponent<SplineAnimate>();
                     animator.enabled = true;
-                    tPlane.GetComponent<SplineAnimate>().Container = hitP.collider.gameObject.transform.parent.GetChild(0).gameObject.GetComponent<SplineContainer>();
+                    var navPoints = new List<Vector3>();
+                    navPoints.Add(runway.transform.Find("TakeoffStart").position);
+                    navPoints.Add(runway.transform.Find("TakeoffG").position);
+                    var tSpline = SplineMaker.SplineGenerator(navPoints, null);
 
+                    animator.Container = tSpline;
+
+                    //tPlane.GetComponent<SplineAnimate>().Container = tSpline;
                     tPlane.GetComponent<SplineGen>().enabled = true;
-                    tPlane.GetComponent<SplineGen>().nSpline = hitP.collider.gameObject.transform.parent.GetChild(0).gameObject.GetComponent<SplineContainer>();
+                    tPlane.GetComponent<SplineGen>().nSpline = tSpline;
+                    tPlane.GetComponent<SplineGen>().oldSpline = tSpline.gameObject;
                     tPlane.GetComponent<SplineGen>().started = true;
-                    //Debug.Log("SplineGen Success");
 
                     tPlane.GetComponent<SplineAnimate>().Play();
                     //Debug.Log("SplineAnimPLay Success");
@@ -152,7 +159,8 @@ public class MouseCont : MonoBehaviour
                     //tPlane.GetComponent<TakeoffCont>().inAir = true;
                     tPlane = null;
 
-                    if(startG != null)
+
+                    if (startG != null)
                     {
                         startG();
                     }

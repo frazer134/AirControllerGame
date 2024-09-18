@@ -12,6 +12,8 @@ public class LandCont : MonoBehaviour
 
     public bool inAir = true;
 
+    public bool firstCol = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,11 @@ public class LandCont : MonoBehaviour
         {
             if (collision.CompareTag("ApproachLong"))
             {
-                if (landing == false)
+                if (landing == false && firstCol == false)
+                {
+                    firstCol = true;
+                }
+                else if(landing == false)
                 {
                     LandPlane(collision);
                 }
@@ -51,7 +57,11 @@ public class LandCont : MonoBehaviour
         {
             if(collision.CompareTag("ApproachLong")||collision.CompareTag("Approach"))
             {
-                if (landing == false)
+                if (landing == false && firstCol == false)
+                {
+                    firstCol = true;
+                }
+                else if(landing == false)
                 {
                     LandPlane(collision);
                 }

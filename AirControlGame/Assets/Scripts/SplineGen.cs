@@ -16,7 +16,7 @@ public class SplineGen : MonoBehaviour
     public bool onApproach = false;
     public bool landed = false;
 
-    GameObject oldSpline = null;
+    public GameObject oldSpline = null;
 
     public float forwardSpeed = 1f;
     public bool paused = false;
