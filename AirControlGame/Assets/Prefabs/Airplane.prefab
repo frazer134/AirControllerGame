@@ -77,6 +77,7 @@ MonoBehaviour:
   splineGenerated: 0
   onApproach: 0
   landed: 0
+  oldSpline: {fileID: 0}
   forwardSpeed: 2
   paused: 0
   LongLand: 0
@@ -171,6 +172,8 @@ MonoBehaviour:
   longLand: 0
   landing: 0
   inAir: 1
+  firstCol: 0
+  speed: 2
 --- !u!1 &8142575663120200371
 GameObject:
   m_ObjectHideFlags: 0

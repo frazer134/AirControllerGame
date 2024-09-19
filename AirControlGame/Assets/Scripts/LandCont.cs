@@ -14,6 +14,8 @@ public class LandCont : MonoBehaviour
 
     public bool firstCol = false;
 
+    public float speed = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,14 @@ public class LandCont : MonoBehaviour
             {
                 gameObject.GetComponent<SplineGen>().PlaneDestroyed();
             }
+
+            var norTime = gameObject.GetComponent<SplineAnimate>().NormalizedTime;
+            var altSpeed = speed - (speed * norTime);
+            if (altSpeed < 1.5f)
+            {
+                altSpeed = 1.5f;
+            }
+            gameObject.GetComponent<SplineAnimate>().MaxSpeed = altSpeed;
         }
     }
 
@@ -84,5 +94,13 @@ public class LandCont : MonoBehaviour
         gameObject.GetComponent<SplineAnimate>().Play();
 
         landing = true;
+
+        var norTime = gameObject.GetComponent<SplineAnimate>().NormalizedTime;
+        var altSpeed = speed - (speed * norTime);
+        if(altSpeed < 0.2f)
+        {
+            speed = 0.2f;
+        }
+        gameObject.GetComponent<SplineAnimate>().MaxSpeed = altSpeed;
     }
 }

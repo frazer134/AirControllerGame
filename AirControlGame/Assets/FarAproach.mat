@@ -113,6 +113,7 @@ Material:
     - _DstBlendAlpha: 10
     - _EnableExternalAlpha: 0
     - _EnvironmentReflections: 1
+    - _FlashSpeed: 5
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0

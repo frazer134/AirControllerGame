@@ -18,6 +18,9 @@ public class TakeoffCont : MonoBehaviour
     public bool onGoal = false;
     public GameObject radioFlash;
 
+    public float acceleration = 0.1f;
+    public float speed = 0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +58,29 @@ public class TakeoffCont : MonoBehaviour
                 radioFlash.SetActive(true);
                 StartCoroutine("InAirFlash");
             }
+        }
+
+        //Debug.Log("Normalized Time: " + gameObject.GetComponent<SplineAnimate>().NormalizedTime);
+
+        if (inAir == false)
+        {
+            //var norTime = gameObject.GetComponent<SplineAnimate>().NormalizedTime;
+            //var altSpeed = gameObject.GetComponent<SplineGen>().forwardSpeed * norTime;
+            //var altspeed = altspeed + speed;
+            //if (altspeed < 0.5f)
+            //{
+            //    altspeed = 0.5f;
+            //}
+            speed = speed + acceleration;
+            if(speed > 2f)
+            {
+                speed = 2f;
+            }
+            gameObject.GetComponent<SplineAnimate>().MaxSpeed = speed;
+        }
+        else
+        {
+            gameObject.GetComponent<SplineAnimate>().MaxSpeed = 2f;
         }
     }
 

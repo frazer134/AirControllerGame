@@ -12,6 +12,7 @@ TagManager:
   - TackoffSpline
   - TakeoffPlane
   - TakeoffQueue
+  - FrontCollider
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Water
   - UI
   - TakeoffUIMask
-  - 
+  - RayIgnore
   - 
   - 
   - 

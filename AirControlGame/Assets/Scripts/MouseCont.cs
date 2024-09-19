@@ -20,6 +20,7 @@ public class MouseCont : MonoBehaviour
     public GameObject tPlane;
     public GameObject takeoffQueue;
     public bool grabbedPlane = false;
+    public float pointDistance = 5f;
 
     public delegate void PauseGame();
     public static event PauseGame pauseG;
@@ -104,14 +105,22 @@ public class MouseCont : MonoBehaviour
             {
                 if (time > pTime)
                 {
-                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Default"));
                     if (hit.collider != null)
                     {
-                        //Debug.Log("Hit: " + hit.collider.gameObject.name);
-                        var hitPoint = new Vector3(hit.point.x, hit.point.y, -2);
-                        splinePoints.Add(hitPoint);
-                        //Instantiate(point, hitPoint, Quaternion.identity);
-                        time = 0f;
+                        if(splinePoints.Count > 0)
+                        {
+                            var dist = Vector3.Distance(hit.collider.gameObject.transform.position, splinePoints[splinePoints.Count - 1]);
+                            Debug.Log("Distance: " + dist);
+                            if (dist > pointDistance)
+                            {
+                                //Debug.Log("Hit: " + hit.collider.gameObject.name);
+                                var hitPoint = new Vector3(hit.point.x, hit.point.y, -2);
+                                splinePoints.Add(hitPoint);
+                                //Instantiate(point, hitPoint, Quaternion.identity);
+                                time = 0f;
+                            }
+                        }
                     }
                 }
                 else
@@ -121,8 +130,12 @@ public class MouseCont : MonoBehaviour
             }
             else
             {
-                currentPlane.GetComponent<SplineGen>().GenPlanePath(splinePoints, pathMesh);
-                currentPlane = null;
+                if (splinePoints.Count > 1)
+                {
+                    currentPlane.GetComponent<SplineGen>().GenPlanePath(splinePoints, pathMesh);
+                    currentPlane = null;
+                    splinePoints.Clear();
+                }
                 splinePoints.Clear();
             }
         }
