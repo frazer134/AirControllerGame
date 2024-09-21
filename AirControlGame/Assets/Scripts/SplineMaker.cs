@@ -38,7 +38,6 @@ namespace Assets.Scenes
             }
             Spline spline = new Spline(knots, false);
             container.Spline= spline;
-            //spline.Knots = knots;
             spline.SetTangentMode(TangentMode.AutoSmooth);
 
             defaulRot = spline.ToArray()[0].Rotation;
