@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
+using UnityEngine.U2D;
 
 namespace Assets.Scenes
 {
@@ -42,7 +43,7 @@ namespace Assets.Scenes
 
             defaulRot = spline.ToArray()[0].Rotation;
 
-            /**
+            
             for(int k = 0; k < spline.Knots.Count<BezierKnot>(); k++)
             {
                 var firstKnot = spline.ToArray()[k];
@@ -54,7 +55,6 @@ namespace Assets.Scenes
                 }
             }
             //Debug.Log(spline);
-            **/
 
             if (defaultMesh != null)
             {
