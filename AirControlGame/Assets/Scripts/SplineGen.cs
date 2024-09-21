@@ -140,5 +140,6 @@ public class SplineGen : MonoBehaviour
             Destroy(gameObject.GetComponent<SplineAnimate>().Container.gameObject);
         }
         Destroy(gameObject);
-;    }
+    }
+
 }

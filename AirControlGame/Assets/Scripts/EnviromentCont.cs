@@ -9,9 +9,6 @@ public class EnviromentCont : MonoBehaviour
     public float maxTime = 20f;
     public float timePassed = 0f;
 
-    float flashDelay = 1f;
-    public float flashTime = 30f;
-
     public float passedFlashTime = 0f;
     public bool uiBool = true;
 
@@ -68,28 +65,6 @@ public class EnviromentCont : MonoBehaviour
 
     IEnumerator FlashUI(float newRot, string uiText)
     {
-        /**
-        var startTime = Time.time;
-        //var timeN = Time.time;
-        //var uiBool = true;
-
-        while(passedFlashTime < flashTime)
-        {
-            Debug.Log(Time.time);
-            Debug.Log(startTime);
-            if(Time.time - startTime > flashDelay)
-            {
-                Debug.Log("If Loop");
-                startTime = Time.time;
-                uiBool = !uiBool;
-                uiCanvas.WindDir.SetActive(uiBool);
-            }
-            //timeN = Time.time;
-            passedFlashTime = passedFlashTime + Time.deltaTime;
-        }
-
-        yield return new WaitForSeconds(3f);
-        **/
         yield return new WaitForSeconds(0.5f);
         uiCanvas.WindDir.SetActive(false);
 

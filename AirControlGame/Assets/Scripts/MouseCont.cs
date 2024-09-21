@@ -28,6 +28,8 @@ public class MouseCont : MonoBehaviour
     public delegate void StartGame();
     public static event StartGame startG;
 
+    public SplineContainer tempS;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,6 +105,7 @@ public class MouseCont : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
+                //Debug.Log("true");
                 if (time > pTime)
                 {
                     RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Default"));
@@ -114,9 +117,11 @@ public class MouseCont : MonoBehaviour
                             Debug.Log("Distance: " + dist);
                             if (dist > pointDistance)
                             {
+                                Debug.Log("true");
                                 //Debug.Log("Hit: " + hit.collider.gameObject.name);
                                 var hitPoint = new Vector3(hit.point.x, hit.point.y, -2);
                                 splinePoints.Add(hitPoint);
+                                DrawPath(splinePoints);
                                 //Instantiate(point, hitPoint, Quaternion.identity);
                                 time = 0f;
                             }
@@ -135,6 +140,10 @@ public class MouseCont : MonoBehaviour
                     currentPlane.GetComponent<SplineGen>().GenPlanePath(splinePoints, pathMesh);
                     currentPlane = null;
                     splinePoints.Clear();
+                    if(tempS != null)
+                    {
+                        Destroy(tempS.gameObject);
+                    }
                 }
                 splinePoints.Clear();
             }
@@ -154,7 +163,7 @@ public class MouseCont : MonoBehaviour
                     var navPoints = new List<Vector3>();
                     navPoints.Add(runway.transform.Find("TakeoffStart").position);
                     navPoints.Add(runway.transform.Find("TakeoffG").position);
-                    var tSpline = SplineMaker.SplineGenerator(navPoints, null);
+                    var tSpline = SplineMaker.SplineGenerator(navPoints, pathMesh);
 
                     animator.Container = tSpline;
 
@@ -256,5 +265,19 @@ public class MouseCont : MonoBehaviour
         {
             pauseG();
         }
+    }
+
+    public void DrawPath(List<Vector3> pathPoints)
+    {
+        if(tempS != null)
+        {
+            Destroy(tempS.gameObject);
+        }
+        tempS = SplineMaker.SplineGenerator(pathPoints, pathMesh);
+        tempS.gameObject.GetComponent<MeshRenderer>().material = pathMat;
+        tempS.gameObject.GetComponent<SplineExtrude>().enabled = true;
+        tempS.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        tempS.gameObject.GetComponent<SplineExtrude>().Rebuild();
+        
     }
 }
