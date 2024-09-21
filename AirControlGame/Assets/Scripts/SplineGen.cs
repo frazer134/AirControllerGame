@@ -1,9 +1,13 @@
 using Assets.Scenes;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.Splines;
 using UnityEngine.U2D;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class SplineGen : MonoBehaviour
 {
@@ -30,6 +34,8 @@ public class SplineGen : MonoBehaviour
     public bool inAir = false;
 
     public bool started = false;
+
+    public Quaternion offsetRot;
 
     //public delegate void PauseGame();
     //public static event PauseGame pauseG;
@@ -60,6 +66,9 @@ public class SplineGen : MonoBehaviour
             }
             **/
         }
+
+        //offsetRot.eulerAngles = new Vector3(0, 0, gameObject.transform.rotation.z);
+        //gameObject.transform.rotation = offsetRot;
     }
 
     public void GenPlanePath(List<Vector3> planePath, Mesh defaultMesh)
@@ -75,6 +84,20 @@ public class SplineGen : MonoBehaviour
         splineGenerated = true;
 
         SplineCleanUp(nSpline);
+
+        /**
+        for (int k = 0; k < nSpline.Spline.Knots.ToArray().Length; k++)
+        {
+            Quaternion knotRot = nSpline.Spline.Knots.ToArray()[k].Rotation;
+            Quaternion newRot = new Quaternion(0, 0, 0, 0);
+
+            var newKnot = nSpline.Spline.Knots.ToArray()[k];
+            newRot.eulerAngles = new Vector3(knotRot.x, 270, 180);
+            newKnot.Rotation= newRot;
+
+            nSpline.Spline.SetKnot(k, newKnot);
+        }
+        **/
     }
 
     public void SplineCleanUp(SplineContainer cSpline)

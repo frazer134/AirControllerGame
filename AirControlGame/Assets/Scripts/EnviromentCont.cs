@@ -9,7 +9,7 @@ public class EnviromentCont : MonoBehaviour
     public float maxTime = 20f;
     public float timePassed = 0f;
 
-    public float passedFlashTime = 0f;
+    public float flashTime = 0.2f;
     public bool uiBool = true;
 
     public UIManager uiCanvas;
@@ -65,23 +65,47 @@ public class EnviromentCont : MonoBehaviour
 
     IEnumerator FlashUI(float newRot, string uiText)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(flashTime);
         uiCanvas.WindDir.SetActive(false);
+        foreach(GameObject obj in runwayList)
+        {
+            obj.transform.Find("RunwaySpline").gameObject.SetActive(false);
+        }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(flashTime);
         uiCanvas.WindDir.SetActive(true);
+        foreach (GameObject obj in runwayList)
+        {
+            obj.transform.Find("RunwaySpline").gameObject.SetActive(true);
+        }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(flashTime);
         uiCanvas.WindDir.SetActive(false);
+        foreach (GameObject obj in runwayList)
+        {
+            obj.transform.Find("RunwaySpline").gameObject.SetActive(false);
+        }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(flashTime);
         uiCanvas.WindDir.SetActive(true);
+        foreach (GameObject obj in runwayList)
+        {
+            obj.transform.Find("RunwaySpline").gameObject.SetActive(true);
+        }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(flashTime);
         uiCanvas.WindDir.SetActive(false);
+        foreach (GameObject obj in runwayList)
+        {
+            obj.transform.Find("RunwaySpline").gameObject.SetActive(false);
+        }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(flashTime);
         uiCanvas.WindDir.SetActive(true);
+        foreach (GameObject obj in runwayList)
+        {
+            obj.transform.Find("RunwaySpline").gameObject.SetActive(true);
+        }
         DelayTurn(newRot, uiText);
     }
 

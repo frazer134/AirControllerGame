@@ -85,6 +85,7 @@ MonoBehaviour:
   TakeoffPlane: 0
   inAir: 0
   started: 0
+  offsetRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!61 &1473315033627199208
 BoxCollider2D:
   m_ObjectHideFlags: 0

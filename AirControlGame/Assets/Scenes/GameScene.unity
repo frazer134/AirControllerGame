@@ -536,12 +536,13 @@ MonoBehaviour:
   splinePoints: []
   pTime: 0.2
   time: 0
-  pathMat: {fileID: 0}
+  pathMat: {fileID: 2100000, guid: 54b8321c4e9676f4ba705661ce9a7ade, type: 2}
   pathMesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
   tPlane: {fileID: 0}
   takeoffQueue: {fileID: 704431645}
   grabbedPlane: 0
   pointDistance: 5
+  tempS: {fileID: 0}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1782,8 +1783,7 @@ MonoBehaviour:
   minTime: 10
   maxTime: 200
   timePassed: 0
-  flashTime: 30
-  passedFlashTime: 0
+  flashTime: 0.4
   uiBool: 1
   uiCanvas: {fileID: 12740203}
 --- !u!4 &1700267178
@@ -2557,7 +2557,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090336770}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

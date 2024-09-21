@@ -12,24 +12,50 @@ namespace Assets.Scenes
 {
     public static class SplineMaker
     {
+
         public static SplineContainer SplineGenerator(List<UnityEngine.Vector3> pathPoints, Mesh defaultMesh)
         {
             GameObject nSpline = new GameObject("nSpline");
 
+            UnityEngine.Quaternion defaulRot = new UnityEngine.Quaternion(0,0,0,0);
             var container = nSpline.AddComponent<SplineContainer>();
-            var spline = container.AddSpline();
+            //var spline = container.AddSpline();
             var knots = new BezierKnot[pathPoints.Count];
-            UnityEngine.Quaternion rot = UnityEngine.Quaternion.Euler(0, -90, 0);
+            UnityEngine.Quaternion rot = UnityEngine.Quaternion.Euler(0,270, 0);
             //Debug.Log(knots);
 
             for (int i = 0; i < pathPoints.Count; i++)
             {
-                knots[i] = new BezierKnot(pathPoints[i], new UnityEngine.Vector3(0,0,0), new UnityEngine.Vector3(0,0,0), rot);
+                if (i == 0 || i == pathPoints.Count - 1)
+                {
+                    knots[i] = new BezierKnot(pathPoints[i], new UnityEngine.Vector3(0, 0, 0), new UnityEngine.Vector3(0, 0, 0), rot);
+                }
+                else
+                {
+                    knots[i] = new BezierKnot(pathPoints[i], pathPoints[i-1], pathPoints[i+1], rot);
+                }
+                //Debug.Log(knots[i]);
             }
-
-            spline.Knots = knots;
+            Spline spline = new Spline(knots, false);
+            container.Spline= spline;
+            //spline.Knots = knots;
             spline.SetTangentMode(TangentMode.AutoSmooth);
+
+            defaulRot = spline.ToArray()[0].Rotation;
+
+            /**
+            for(int k = 0; k < spline.Knots.Count<BezierKnot>(); k++)
+            {
+                var firstKnot = spline.ToArray()[k];
+
+                if(firstKnot.Rotation != defaulRot)
+                {
+                    firstKnot.Rotation = defaulRot;
+                    spline.SetKnot(k, firstKnot);
+                }
+            }
             //Debug.Log(spline);
+            **/
 
             if (defaultMesh != null)
             {
