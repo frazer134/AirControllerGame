@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public int planesLanded = 0;
     public GameObject score;
     public GameObject WindDir;
+    public GameObject timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,5 +39,11 @@ public class UIManager : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void UpdateTimer(string time)
+    {
+        timer.SetActive(true);
+        timer.GetComponent<TextMeshProUGUI>().text = time;
     }
 }

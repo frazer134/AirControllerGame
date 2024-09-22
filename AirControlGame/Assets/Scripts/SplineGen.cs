@@ -133,11 +133,18 @@ public class SplineGen : MonoBehaviour
                 else if (inAir == false && collision.gameObject.GetComponent<SplineGen>().inAir == false)
                 {
                     Debug.Log("Plane Collision");
-                    var camera = GameObject.Find("MainCamera");
+                    var camera = GameObject.Find("Main Camera");
                     camera.GetComponent<MouseCont>().StopGame();
                     camera.GetComponent<CameraCont>().EndGame(gameObject);
                 }
             }
+        }
+
+        if(collision.gameObject.CompareTag("FailCollider"))
+        {
+            var camera = GameObject.Find("Main Camera");
+            camera.GetComponent<MouseCont>().StopGame();
+            camera.GetComponent<CameraCont>().EndGame(gameObject);
         }
     }
 

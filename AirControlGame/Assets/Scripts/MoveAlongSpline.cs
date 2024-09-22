@@ -38,7 +38,7 @@ public class MoveAlongSpline : MonoBehaviour
             Vector3 nextpos = spline.EvaluatePosition(distancePercentage + 0.05f);
             Vector3 direction = nextpos - currentPos;
 
-            if (distancePercentage > 1f)
+            if (distancePercentage > 0.9f)
             {
                 distancePercentage = 0f;
                 moving = false;

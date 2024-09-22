@@ -13,6 +13,7 @@ TagManager:
   - TakeoffPlane
   - TakeoffQueue
   - FrontCollider
+  - FailCollider
   layers:
   - Default
   - TransparentFX

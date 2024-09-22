@@ -80,13 +80,16 @@ public class MouseCont : MonoBehaviour
                     }
                     else
                     {
-                        //Debug.Log("Plane Hit");
-                        currentPlane = hitP.collider.gameObject;
-                        splinePoints.Add(currentPlane.transform.position);
-                        splineRot.Add(gameObject.transform.rotation);
-                        if (pauseG != null)
+                        if (hitP.collider.gameObject.GetComponent<TakeoffCont>().inAir == true)
                         {
-                            pauseG();
+                            //Debug.Log("Plane Hit");
+                            currentPlane = hitP.collider.gameObject;
+                            splinePoints.Add(currentPlane.transform.position);
+                            splineRot.Add(gameObject.transform.rotation);
+                            if (pauseG != null)
+                            {
+                                pauseG();
+                            }
                         }
                     }
                 }
@@ -111,16 +114,18 @@ public class MouseCont : MonoBehaviour
                 //Debug.Log("true");
                 if (time > pTime)
                 {
-                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Default"));
+                    RaycastHit2D hit = new RaycastHit2D();
+                    hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Default"));
                     if (hit.collider != null)
                     {
                         if(splinePoints.Count > 0)
                         {
-                            var dist = Vector3.Distance(hit.collider.gameObject.transform.position, splinePoints[splinePoints.Count - 1]);
-                            //Debug.Log("Distance: " + dist);
+                            float dist;
+                            dist = Vector3.Distance(hit.collider.gameObject.transform.position, splinePoints[splinePoints.Count - 1]);
+                            Debug.Log("Distance: " + dist);
                             if (dist > pointDistance)
                             {
-                                //Debug.Log("true");
+                                Debug.Log("true");
                                 //Debug.Log("Hit: " + hit.collider.gameObject.name);
                                 var hitPoint = new Vector3(hit.point.x, hit.point.y, -2);
                                 splinePoints.Add(hitPoint);
