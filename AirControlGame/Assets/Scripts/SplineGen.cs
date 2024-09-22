@@ -11,9 +11,6 @@ using Vector3 = UnityEngine.Vector3;
 
 public class SplineGen : MonoBehaviour
 {
-    public Quaternion startRot;
-    //[SerializeField] private Vector3[] splinePoints;
-
     public SplineContainer nSpline;
 
     public bool splineGenerated = false;
@@ -36,6 +33,7 @@ public class SplineGen : MonoBehaviour
     public bool started = false;
 
     public Quaternion offsetRot;
+    public GameObject spriteHolder;
 
     //public delegate void PauseGame();
     //public static event PauseGame pauseG;
@@ -44,7 +42,6 @@ public class SplineGen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.transform.rotation = startRot;
         MouseCont.pauseG += PausePlane;
         MouseCont.startG += StartPlane;
     }
@@ -54,32 +51,21 @@ public class SplineGen : MonoBehaviour
     {
         if (paused == false)
         {
-            transform.position = transform.position + ((transform.right * forwardSpeed) * Time.deltaTime);
-            /**
-            if (gameObject.GetComponent<SplineAnimate>().IsPlaying == false)
+            if (gameObject.GetComponent<MoveAlongSpline>().moving == false && gameObject.GetComponent<MoveAlongSpline>().GetDistance() == 0f)
             {
-                transform.position = transform.position + ((transform.right * forwardSpeed)*Time.deltaTime);
+                transform.position = transform.position + ((transform.right * forwardSpeed) * Time.deltaTime);
             }
-            else
-            {
-                //gameObject.GetComponent<SplineAnimate>().Play();
-            }
-            **/
         }
 
-        //offsetRot.eulerAngles = new Vector3(0, 0, gameObject.transform.rotation.z);
-        //gameObject.transform.rotation = offsetRot;
     }
 
-    public void GenPlanePath(List<Vector3> planePath, Mesh defaultMesh)
+    public void GenPlanePath(List<Vector3> planePath, List<Quaternion> planeRot,  Mesh defaultMesh)
     {
 
-        nSpline = SplineMaker.SplineGenerator(planePath, defaultMesh);
+        nSpline = SplineMaker.SplineGenerator(planePath, planeRot, defaultMesh);
 
-        gameObject.GetComponent<SplineAnimate>().enabled = true;
-        gameObject.GetComponent<SplineAnimate>().Container = nSpline;
-        gameObject.GetComponent<SplineAnimate>().Restart(false);
-        gameObject.GetComponent<SplineAnimate>().Play();
+        gameObject.GetComponent<MoveAlongSpline>().SplineUpadte(nSpline);
+        gameObject.GetComponent<MoveAlongSpline>().moving = true;
 
         splineGenerated = true;
 
@@ -118,13 +104,16 @@ public class SplineGen : MonoBehaviour
     public void PausePlane()
     {
         //Debug.Log("Plane Stopped");
-        gameObject.GetComponent<SplineAnimate>().Pause();
+        gameObject.GetComponent<MoveAlongSpline>().moving = false;
         paused= true;
     }
 
     public void StartPlane()
     {
-        gameObject.GetComponent<SplineAnimate>().Play();
+        if (gameObject.GetComponent<MoveAlongSpline>().spline != null)
+        {
+            gameObject.GetComponent<MoveAlongSpline>().moving = true;
+        }
         paused= false;
     }
 
@@ -156,12 +145,9 @@ public class SplineGen : MonoBehaviour
     {
         MouseCont.pauseG -= PausePlane;
         MouseCont.startG -= StartPlane;
+        gameObject.GetComponent<MoveAlongSpline>().moving = false;
         uiCanvas.GetComponent<UIManager>().PlaneLanded();
         Destroy(nSpline.gameObject);
-        if(gameObject.GetComponent<SplineAnimate>().Container != null)
-        {
-            Destroy(gameObject.GetComponent<SplineAnimate>().Container.gameObject);
-        }
         Destroy(gameObject);
     }
 

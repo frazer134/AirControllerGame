@@ -8,13 +8,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
 using UnityEngine.U2D;
+using Quaternion = UnityEngine.Quaternion;
 
 namespace Assets.Scenes
 {
     public static class SplineMaker
     {
 
-        public static SplineContainer SplineGenerator(List<UnityEngine.Vector3> pathPoints, Mesh defaultMesh)
+        public static SplineContainer SplineGenerator(List<UnityEngine.Vector3> pathPoints, List<Quaternion> pathRot,  Mesh defaultMesh)
         {
             GameObject nSpline = new GameObject("nSpline");
 
@@ -27,20 +28,13 @@ namespace Assets.Scenes
 
             for (int i = 0; i < pathPoints.Count; i++)
             {
-                if (i == 0 || i == pathPoints.Count - 1)
-                {
-                    knots[i] = new BezierKnot(pathPoints[i], new UnityEngine.Vector3(0, 0, 0), new UnityEngine.Vector3(0, 0, 0), rot);
-                }
-                else
-                {
-                    knots[i] = new BezierKnot(pathPoints[i], pathPoints[i-1], pathPoints[i+1], rot);
-                }
+                knots[i] = new BezierKnot(pathPoints[i], new UnityEngine.Vector3(0, 0, 0), new UnityEngine.Vector3(0, 0, 0), pathRot[i]);
                 //Debug.Log(knots[i]);
             }
-            Spline spline = new Spline(knots, false);
+            UnityEngine.Splines.Spline spline = new UnityEngine.Splines.Spline(knots, false);
             container.Spline= spline;
             spline.SetTangentMode(TangentMode.AutoSmooth);
-
+            /**
             defaulRot = spline.ToArray()[0].Rotation;
 
             
@@ -55,6 +49,7 @@ namespace Assets.Scenes
                 }
             }
             //Debug.Log(spline);
+            **/
 
             if (defaultMesh != null)
             {

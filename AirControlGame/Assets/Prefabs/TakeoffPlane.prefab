@@ -44,8 +44,8 @@ GameObject:
   - component: {fileID: 3683645977777493450}
   - component: {fileID: 1473315033627199208}
   - component: {fileID: 5128337187587945186}
-  - component: {fileID: -8158610933092388375}
   - component: {fileID: 4604995624337516076}
+  - component: {fileID: 8423383853697841857}
   m_Layer: 0
   m_Name: TakeoffPlane
   m_TagString: Plane
@@ -61,8 +61,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5155170223396312889}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -14.085602, y: 1.7898822, z: -2}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 195003566476029796}
@@ -96,6 +96,8 @@ MonoBehaviour:
   TakeoffPlane: 0
   inAir: 0
   started: 0
+  offsetRot: {x: 0, y: 0, z: 0, w: 0}
+  spriteHolder: {fileID: 8142575663120200371}
 --- !u!61 &1473315033627199208
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -168,29 +170,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &-8158610933092388375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5155170223396312889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a074d529cf945029ef7cf40540c9df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_LoopMode: 0
-  m_Method: 1
-  m_Duration: 3.6499999
-  m_MaxSpeed: 0
-  m_EasingMode: 0
-  m_AlignmentMode: 1
-  m_ObjectForwardAxis: 0
-  m_ObjectUpAxis: 1
-  m_StartOffset: 0
 --- !u!114 &4604995624337516076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +189,24 @@ MonoBehaviour:
   radioFlash: {fileID: 7056250784626352508}
   acceleration: 0.01
   speed: 0.1
+--- !u!114 &8423383853697841857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5155170223396312889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2184c1e986fe9e84283a326f06a074b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  speed: 2
+  distancePercentage: 0
+  splineLength: 0
+  moving: 0
+  calc: 0
 --- !u!1 &5884044660029404451
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,14 +399,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8142575663120200371}
-  m_LocalRotation: {x: 0.92387956, y: 0.38268343, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2758067695889809500}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!212 &8879245393564761709
 SpriteRenderer:
   m_ObjectHideFlags: 0

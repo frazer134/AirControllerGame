@@ -14,31 +14,37 @@ public class EnviromentCont : MonoBehaviour
 
     public UIManager uiCanvas;
 
+    bool paused = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        MouseCont.pauseG += StopGame;
+        MouseCont.startG += StartGame;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timePassed < maxTime)
+        if (paused == false)
         {
-            if(timePassed > minTime)
+            if (timePassed < maxTime)
             {
-                if(Random.Range(0,10) == 7)
+                if (timePassed > minTime)
                 {
-                    TurnRunways();
-                    timePassed = 0f;
+                    if (Random.Range(0, 10) == 7)
+                    {
+                        TurnRunways();
+                        timePassed = 0f;
+                    }
                 }
+                timePassed = timePassed + Time.deltaTime;
             }
-            timePassed = timePassed + Time.deltaTime;
-        }
-        else
-        {
-            TurnRunways();
-            timePassed = 0f;
+            else
+            {
+                TurnRunways();
+                timePassed = 0f;
+            }
         }
     }
 
@@ -143,5 +149,15 @@ public class EnviromentCont : MonoBehaviour
                 uiCanvas.UpdateWindDirection("Wind W");
             }
         }
+    }
+
+    public void StartGame()
+    {
+        paused = false;
+    }
+
+    public void StopGame()
+    {
+        paused = true;
     }
 }

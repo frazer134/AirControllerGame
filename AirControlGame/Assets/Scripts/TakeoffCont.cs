@@ -50,7 +50,7 @@ public class TakeoffCont : MonoBehaviour
 
         if(inAir == false && gameObject.GetComponent<SplineGen>().nSpline != null)
         {
-            if(gameObject.GetComponent<SplineAnimate>().NormalizedTime == 1)
+            if(gameObject.GetComponent<MoveAlongSpline>().GetDistance() == 0 && gameObject.GetComponent<MoveAlongSpline>().moving == false)
             {
                 inAir = true;
                 gameObject.GetComponent<SplineGen>().inAir = true;
@@ -76,11 +76,11 @@ public class TakeoffCont : MonoBehaviour
             {
                 speed = 2f;
             }
-            gameObject.GetComponent<SplineAnimate>().MaxSpeed = speed;
+            gameObject.GetComponent<MoveAlongSpline>().speed = speed;
         }
         else
         {
-            gameObject.GetComponent<SplineAnimate>().MaxSpeed = 2f;
+            gameObject.GetComponent<MoveAlongSpline>().speed = 2f;
         }
     }
 

@@ -10,6 +10,7 @@ public class MouseCont : MonoBehaviour
 {
     public GameObject currentPlane;
     public List<Vector3> splinePoints = new List<Vector3>();
+    public List<Quaternion> splineRot = new List<Quaternion>();
 
     public float pTime = 1f;
     public float time = 0f;
@@ -82,6 +83,7 @@ public class MouseCont : MonoBehaviour
                         //Debug.Log("Plane Hit");
                         currentPlane = hitP.collider.gameObject;
                         splinePoints.Add(currentPlane.transform.position);
+                        splineRot.Add(gameObject.transform.rotation);
                         if (pauseG != null)
                         {
                             pauseG();
@@ -93,6 +95,7 @@ public class MouseCont : MonoBehaviour
                     //Debug.Log("Plane Hit");
                     currentPlane = hitP.collider.gameObject;
                     splinePoints.Add(currentPlane.transform.position);
+                    splineRot.Add(gameObject.transform.rotation);
                     if (pauseG != null)
                     {
                         pauseG();
@@ -121,7 +124,8 @@ public class MouseCont : MonoBehaviour
                                 //Debug.Log("Hit: " + hit.collider.gameObject.name);
                                 var hitPoint = new Vector3(hit.point.x, hit.point.y, -2);
                                 splinePoints.Add(hitPoint);
-                                DrawPath(splinePoints);
+                                splineRot.Add(gameObject.transform.rotation);
+                                DrawPath(splinePoints, splineRot);
                                 //Instantiate(point, hitPoint, Quaternion.identity);
                                 time = 0f;
                             }
@@ -137,15 +141,17 @@ public class MouseCont : MonoBehaviour
             {
                 if (splinePoints.Count > 1)
                 {
-                    currentPlane.GetComponent<SplineGen>().GenPlanePath(splinePoints, pathMesh);
+                    currentPlane.GetComponent<SplineGen>().GenPlanePath(splinePoints, splineRot, pathMesh);
                     currentPlane = null;
                     splinePoints.Clear();
+                    splineRot.Clear();
                     if(tempS != null)
                     {
                         Destroy(tempS.gameObject);
                     }
                 }
                 splinePoints.Clear();
+                splineRot.Clear();
             }
         }
 
@@ -158,14 +164,18 @@ public class MouseCont : MonoBehaviour
                 if (hitP.collider.CompareTag("Runway"))
                 {
                     var runway = hitP.collider.gameObject.transform.parent;
-                    var animator = tPlane.GetComponent<SplineAnimate>();
-                    animator.enabled = true;
+                    var animator = tPlane.GetComponent<MoveAlongSpline>();
                     var navPoints = new List<Vector3>();
                     navPoints.Add(runway.transform.Find("TakeoffStart").position);
                     navPoints.Add(runway.transform.Find("TakeoffG").position);
-                    var tSpline = SplineMaker.SplineGenerator(navPoints, pathMesh);
 
-                    animator.Container = tSpline;
+                    var rot = new List<Quaternion>();
+                    rot.Add(gameObject.transform.rotation);
+                    rot.Add(gameObject.transform.rotation);
+
+                    var tSpline = SplineMaker.SplineGenerator(navPoints, rot, pathMesh);
+
+                    animator.SplineUpadte(tSpline);
 
                     //tPlane.GetComponent<SplineAnimate>().Container = tSpline;
                     tPlane.GetComponent<SplineGen>().enabled = true;
@@ -173,13 +183,14 @@ public class MouseCont : MonoBehaviour
                     tPlane.GetComponent<SplineGen>().oldSpline = tSpline.gameObject;
                     tPlane.GetComponent<SplineGen>().started = true;
 
-                    tPlane.GetComponent<SplineAnimate>().Play();
+                    tPlane.GetComponent<MoveAlongSpline>().moving = true;
                     //Debug.Log("SplineAnimPLay Success");
                     grabbedPlane = false;
                     takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList.Remove(tPlane);
                     takeoffQueue.GetComponent<TakeoffPlaneSpawner>().UpdateDisplay();
                     //tPlane.GetComponent<TakeoffCont>().inAir = true;
                     tPlane = null;
+                    currentPlane = null;
 
 
                     if (startG != null)
@@ -267,13 +278,13 @@ public class MouseCont : MonoBehaviour
         }
     }
 
-    public void DrawPath(List<Vector3> pathPoints)
+    public void DrawPath(List<Vector3> pathPoints, List<Quaternion> pathRot)
     {
         if(tempS != null)
         {
             Destroy(tempS.gameObject);
         }
-        tempS = SplineMaker.SplineGenerator(pathPoints, pathMesh);
+        tempS = SplineMaker.SplineGenerator(pathPoints, pathRot, pathMesh);
         tempS.gameObject.GetComponent<MeshRenderer>().material = pathMat;
         tempS.gameObject.GetComponent<SplineExtrude>().enabled = true;
         tempS.gameObject.GetComponent<MeshRenderer>().enabled = true;
