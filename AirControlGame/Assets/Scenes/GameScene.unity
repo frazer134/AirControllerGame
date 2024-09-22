@@ -686,7 +686,7 @@ MonoBehaviour:
   timePassed: 0
   spawnTime: 5
   uiCanvas: {fileID: 12740202}
-  timer: 5
+  timer: 30
   maxplanes: 5
   gameP: 0
 --- !u!212 &704431647
@@ -3041,7 +3041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2065812344
 MonoBehaviour:
   m_ObjectHideFlags: 0
