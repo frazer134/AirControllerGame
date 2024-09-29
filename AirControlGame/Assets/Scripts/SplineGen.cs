@@ -158,4 +158,9 @@ public class SplineGen : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void WrongRunway()
+    {
+        uiCanvas.GetComponent<UIManager>().WrongRunwayHit(gameObject.transform.position);
+    }
+
 }

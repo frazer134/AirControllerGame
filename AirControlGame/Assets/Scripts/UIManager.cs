@@ -13,6 +13,10 @@ public class UIManager : MonoBehaviour
     public GameObject score;
     public GameObject WindDir;
     public GameObject timer;
+
+    public GameObject wrongRunway;
+
+    private IEnumerator coroutine;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,5 +49,30 @@ public class UIManager : MonoBehaviour
     {
         timer.SetActive(true);
         timer.GetComponent<TextMeshProUGUI>().text = time;
+    }
+
+    public void WrongRunwayHit(Vector3 gPos)
+    {
+
+        float offsetY = gPos.y + 2f;
+
+        Vector3 offsetPos = new Vector3(gPos.x, offsetY, gPos.z);
+        
+        Vector2 CanvasPos;
+        Vector2 screenPoint = Camera.main.WorldToScreenPoint(offsetPos);
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(gameObject.GetComponent<RectTransform>(), screenPoint, null, out CanvasPos);
+
+        wrongRunway.transform.localPosition = CanvasPos;
+        wrongRunway.SetActive(true);
+
+        coroutine = TurnOffUI(wrongRunway, 2f);
+        StartCoroutine(coroutine);
+    }
+
+    private IEnumerator TurnOffUI(GameObject obj, float time)
+    {
+        yield return new WaitForSeconds(time);
+        obj.SetActive(false);
     }
 }

@@ -61,6 +61,7 @@ public class LandCont : MonoBehaviour
             else
             {
                 Debug.Log("Long Land Needed");
+                gameObject.GetComponent<SplineGen>().WrongRunway();
             }
         }
         else
