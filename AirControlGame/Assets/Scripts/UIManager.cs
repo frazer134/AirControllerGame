@@ -71,6 +71,11 @@ public class UIManager : MonoBehaviour
         timer.GetComponent<TextMeshProUGUI>().text = time;
     }
 
+    public void TurnOffTimerUI()
+    {
+        timer.SetActive(false);
+    }
+
     public void WrongRunwayHit(Vector3 gPos)
     {
 

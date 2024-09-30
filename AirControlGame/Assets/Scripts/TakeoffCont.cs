@@ -20,6 +20,8 @@ public class TakeoffCont : MonoBehaviour
 
     public float acceleration = 0.1f;
     public float speed = 0.1f;
+    public float scale = 1f;
+    public bool TakeoffStarted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -60,17 +62,8 @@ public class TakeoffCont : MonoBehaviour
             }
         }
 
-        //Debug.Log("Normalized Time: " + gameObject.GetComponent<SplineAnimate>().NormalizedTime);
-
         if (inAir == false)
         {
-            //var norTime = gameObject.GetComponent<SplineAnimate>().NormalizedTime;
-            //var altSpeed = gameObject.GetComponent<SplineGen>().forwardSpeed * norTime;
-            //var altspeed = altspeed + speed;
-            //if (altspeed < 0.5f)
-            //{
-            //    altspeed = 0.5f;
-            //}
             speed = speed + acceleration;
             if(speed > 2f)
             {
@@ -81,6 +74,25 @@ public class TakeoffCont : MonoBehaviour
         else
         {
             gameObject.GetComponent<MoveAlongSpline>().speed = 2f;
+        }
+
+        if(TakeoffStarted == true)
+        {
+            scale = scale + (acceleration/20);
+            if(scale < 1f)
+            {
+                scale = 1f;
+            }
+            if(scale > 2f)
+            {
+                scale = 2f;
+                TakeoffStarted = false;
+            }
+            gameObject.transform.localScale = new Vector3(scale, scale, scale);
+        }
+        else
+        {
+            gameObject.transform.localScale = new Vector3(2, 2, 2);
         }
     }
 

@@ -60,6 +60,11 @@ public class TakeoffPlaneSpawner : MonoBehaviour
                     camera.GetComponent<CameraCont>().EndGame(takeoffList[takeoffList.Count - 1]);
                 }
             }
+            else
+            {
+                timer = 30f;
+                uiCanvas.GetComponent<UIManager>().TurnOffTimerUI();
+            }
         }
     }
 
@@ -74,19 +79,6 @@ public class TakeoffPlaneSpawner : MonoBehaviour
 
         nPlane.GetComponent<TakeoffCont>().goal = goal;
     }
-
-    /**
-    public void AddDisplay(GameObject nPlane)
-    {
-        for(int i =0; i <= takeoffList.Count; i++)
-        {
-            var pos = gameObject.transform.position;
-            Vector3 posOffset = new Vector3(i*offset,1,2);
-            pos = pos + posOffset;
-            nPlane.transform.position = pos;
-;        }
-    }
-    **/
 
     public void UpdateDisplay()
     {

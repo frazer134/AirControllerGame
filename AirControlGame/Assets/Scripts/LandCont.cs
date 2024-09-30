@@ -15,6 +15,7 @@ public class LandCont : MonoBehaviour
     public bool firstCol = false;
 
     public float speed = 2f;
+    public float scale = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +35,17 @@ public class LandCont : MonoBehaviour
 
             var norTime = gameObject.GetComponent<MoveAlongSpline>().GetDistance();
             var altSpeed = speed - (speed * norTime);
+            var altScale = scale - (scale * norTime);
             if (altSpeed < 1.5f)
             {
                 altSpeed = 1.5f;
             }
+            if(altScale < 1f)
+            {
+                altScale = 1f;
+            }
             gameObject.GetComponent<MoveAlongSpline>().speed = altSpeed;
+            gameObject.transform.localScale = new Vector3(altScale, altScale, altScale);
         }
     }
 
@@ -60,8 +67,10 @@ public class LandCont : MonoBehaviour
             }
             else
             {
-                Debug.Log("Long Land Needed");
-                gameObject.GetComponent<SplineGen>().WrongRunway();
+                if (landing == false)
+                {
+                    gameObject.GetComponent<SplineGen>().WrongRunway();
+                }
             }
         }
         else
@@ -83,13 +92,16 @@ public class LandCont : MonoBehaviour
     public void LandPlane(Collider2D collision)
     {
         var runwayShell = collision.gameObject.transform.parent;
+        var runwayStart = runwayShell.transform.Find("TakeoffStart");
         var runwayEnd = runwayShell.transform.Find("RunwayEnd");
 
         var navPoints = new List<Vector3>();
         navPoints.Add(gameObject.transform.position);
+        navPoints.Add(runwayStart.transform.position);
         navPoints.Add(runwayEnd.transform.position);
 
         var rot = new List<Quaternion>();
+        rot.Add(new Quaternion(0, 0, 0, 0));
         rot.Add(new Quaternion(0, 0, 0, 0));
         rot.Add(new Quaternion(0, 0, 0, 0));
         var lSpline = SplineMaker.SplineGenerator(navPoints, rot, null);

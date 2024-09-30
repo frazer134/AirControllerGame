@@ -175,6 +175,7 @@ public class MouseCont : MonoBehaviour
                     tPlane.GetComponent<SplineGen>().started = true;
 
                     tPlane.GetComponent<MoveAlongSpline>().moving = true;
+                    tPlane.GetComponent<TakeoffCont>().TakeoffStarted = true;
                     //Debug.Log("SplineAnimPLay Success");
                     grabbedPlane = false;
                     takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList.Remove(tPlane);

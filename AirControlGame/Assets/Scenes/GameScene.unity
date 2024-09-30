@@ -675,7 +675,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.8
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -2948,7 +2948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 373652420023806078, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1829438856848901529, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: m_Enabled
@@ -3072,7 +3072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6101464721103054297, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6459847684132085981, guid: ce1a434bf8f2f2c45aa840f79db1e5f2, type: 3}
       propertyPath: m_Enabled
@@ -3272,8 +3272,8 @@ MonoBehaviour:
   minTime: 10
   maxTime: 40
   time: 0
-  shortP: {fileID: 21300000, guid: 478268159468cd44db8b9d95cc12baa0, type: 3}
-  longP: {fileID: 21300000, guid: 231d003815da9774b95ea1c6ab9730ba, type: 3}
+  shortP: {fileID: 21300000, guid: 9570cf549446d1b45a262d4525d85d18, type: 3}
+  longP: {fileID: 21300000, guid: 3ca63285e8e8e734abed8109e3f9e2bf, type: 3}
   canvasUI: {fileID: 12740202}
   gameP: 0
 --- !u!4 &2065812345
