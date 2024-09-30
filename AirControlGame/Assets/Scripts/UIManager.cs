@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
     public GameObject wrongRunway;
 
     private IEnumerator coroutine;
+    private bool loadNewScene = false;
+    private string loadSceneName;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,21 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(loadNewScene == true)
+        {
+            if(GameObject.FindWithTag("Plane") != null)
+            {
+                Destroy(GameObject.FindWithTag("Plane"));
+            }
+            else
+            {
+                loadNewScene = false;
+                if(loadSceneName != null)
+                {
+                    SceneManager.LoadScene(loadSceneName);
+                }
+            }
+        }
     }
 
     public void PlaneLanded()
@@ -42,7 +58,11 @@ public class UIManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        if(sceneName == "MainMenu")
+        {
+            loadSceneName = sceneName;
+            loadNewScene = true;
+        }
     }
 
     public void UpdateTimer(string time)

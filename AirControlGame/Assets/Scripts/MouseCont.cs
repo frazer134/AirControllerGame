@@ -41,18 +41,6 @@ public class MouseCont : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /**
-        if(grabbedPlane == true)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider != null)
-            {
-                var hitPoint = new Vector3(hit.point.x, hit.point.y, -2);
-                tPlane.transform.position = hitPoint;
-            }
-        }
-        **/
-
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             RaycastHit2D hitP = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -122,10 +110,8 @@ public class MouseCont : MonoBehaviour
                         {
                             float dist;
                             dist = Vector3.Distance(hit.collider.gameObject.transform.position, splinePoints[splinePoints.Count - 1]);
-                            Debug.Log("Distance: " + dist);
                             if (dist > pointDistance)
                             {
-                                Debug.Log("true");
                                 //Debug.Log("Hit: " + hit.collider.gameObject.name);
                                 var hitPoint = new Vector3(hit.point.x, hit.point.y, -2);
                                 splinePoints.Add(hitPoint);

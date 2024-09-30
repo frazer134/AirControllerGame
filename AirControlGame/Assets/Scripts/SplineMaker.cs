@@ -34,22 +34,6 @@ namespace Assets.Scenes
             UnityEngine.Splines.Spline spline = new UnityEngine.Splines.Spline(knots, false);
             container.Spline= spline;
             spline.SetTangentMode(TangentMode.AutoSmooth);
-            /**
-            defaulRot = spline.ToArray()[0].Rotation;
-
-            
-            for(int k = 0; k < spline.Knots.Count<BezierKnot>(); k++)
-            {
-                var firstKnot = spline.ToArray()[k];
-
-                if(firstKnot.Rotation != defaulRot)
-                {
-                    firstKnot.Rotation = defaulRot;
-                    spline.SetKnot(k, firstKnot);
-                }
-            }
-            //Debug.Log(spline);
-            **/
 
             if (defaultMesh != null)
             {

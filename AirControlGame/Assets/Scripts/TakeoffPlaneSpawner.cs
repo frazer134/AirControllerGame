@@ -45,17 +45,20 @@ public class TakeoffPlaneSpawner : MonoBehaviour
             }
         }
 
-        if(takeoffList.Count >= maxplanes)
+        if (gameP == false)
         {
-            timer = timer - Time.deltaTime;
-            int TimeINT = (int)timer;
-            uiCanvas.GetComponent<UIManager>().UpdateTimer(TimeINT.ToString());
-
-            if(timer <= 0)
+            if (takeoffList.Count >= maxplanes)
             {
-                var camera = GameObject.Find("Main Camera");
-                camera.GetComponent<MouseCont>().StopGame();
-                camera.GetComponent<CameraCont>().EndGame(takeoffList[takeoffList.Count-1]);
+                timer = timer - Time.deltaTime;
+                int TimeINT = (int)timer;
+                uiCanvas.GetComponent<UIManager>().UpdateTimer(TimeINT.ToString());
+
+                if (timer <= 0)
+                {
+                    var camera = GameObject.Find("Main Camera");
+                    camera.GetComponent<MouseCont>().StopGame();
+                    camera.GetComponent<CameraCont>().EndGame(takeoffList[takeoffList.Count - 1]);
+                }
             }
         }
     }

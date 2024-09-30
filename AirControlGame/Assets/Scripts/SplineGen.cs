@@ -44,6 +44,7 @@ public class SplineGen : MonoBehaviour
     {
         MouseCont.pauseG += PausePlane;
         MouseCont.startG += StartPlane;
+        Debug.Log("Delegates Assigned");
     }
 
     // Update is called once per frame
@@ -70,20 +71,6 @@ public class SplineGen : MonoBehaviour
         splineGenerated = true;
 
         SplineCleanUp(nSpline);
-
-        /**
-        for (int k = 0; k < nSpline.Spline.Knots.ToArray().Length; k++)
-        {
-            Quaternion knotRot = nSpline.Spline.Knots.ToArray()[k].Rotation;
-            Quaternion newRot = new Quaternion(0, 0, 0, 0);
-
-            var newKnot = nSpline.Spline.Knots.ToArray()[k];
-            newRot.eulerAngles = new Vector3(knotRot.x, 270, 180);
-            newKnot.Rotation= newRot;
-
-            nSpline.Spline.SetKnot(k, newKnot);
-        }
-        **/
     }
 
     public void SplineCleanUp(SplineContainer cSpline)
@@ -104,8 +91,11 @@ public class SplineGen : MonoBehaviour
     public void PausePlane()
     {
         //Debug.Log("Plane Stopped");
-        gameObject.GetComponent<MoveAlongSpline>().moving = false;
-        paused= true;
+        if (gameObject.GetComponent<MoveAlongSpline>() != null)
+        {
+            gameObject.GetComponent<MoveAlongSpline>().moving = false;
+        }
+        paused = true;
     }
 
     public void StartPlane()
@@ -114,7 +104,7 @@ public class SplineGen : MonoBehaviour
         {
             gameObject.GetComponent<MoveAlongSpline>().moving = true;
         }
-        paused= false;
+        paused = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -148,19 +138,27 @@ public class SplineGen : MonoBehaviour
         }
     }
 
-    public void PlaneDestroyed()
-    {
-        MouseCont.pauseG -= PausePlane;
-        MouseCont.startG -= StartPlane;
-        gameObject.GetComponent<MoveAlongSpline>().moving = false;
-        uiCanvas.GetComponent<UIManager>().PlaneLanded();
-        Destroy(nSpline.gameObject);
-        Destroy(gameObject);
-    }
-
     public void WrongRunway()
     {
         uiCanvas.GetComponent<UIManager>().WrongRunwayHit(gameObject.transform.position);
+    }
+
+    public void PlaneDestroyed()
+    {
+        uiCanvas.GetComponent<UIManager>().PlaneLanded();
+        Destroy(gameObject);
+    }
+
+    public void OnDestroy()
+    {
+        MouseCont.pauseG -= PausePlane;
+        MouseCont.startG -= StartPlane;
+        Debug.Log("Delegates Removed");
+        gameObject.GetComponent<MoveAlongSpline>().moving = false;
+        if (nSpline != null)
+        {
+            Destroy(nSpline.gameObject);
+        }
     }
 
 }
