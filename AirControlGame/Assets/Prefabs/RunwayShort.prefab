@@ -719,15 +719,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2734454904128818095}
-  m_LocalRotation: {x: 0, y: 0, z: -0.16504757, w: 0.9862857}
-  m_LocalPosition: {x: 12.54, y: -1.72, z: -2}
+  m_LocalRotation: {x: 0, y: 0, z: -0.21643952, w: 0.97629607}
+  m_LocalPosition: {x: 12.51, y: -2.47, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 821661267854643567}
   m_Father: {fileID: 8076401422937275626}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -19}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -25}
 --- !u!1 &4052828258968906516
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,14 +752,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4052828258968906516}
-  m_LocalRotation: {x: -0, y: -0, z: -0.9732609, w: 0.22970276}
-  m_LocalPosition: {x: 13.52, y: -0.94, z: -1.5}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9848078, w: 0.17364825}
+  m_LocalPosition: {x: 13.48, y: -1.7, z: -1.5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8076401422937275626}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -153.441}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -160}
 --- !u!212 &5516653308238829676
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1709,15 +1709,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242280138245315243}
-  m_LocalRotation: {x: 0, y: 0, z: 0.22495107, w: 0.9743701}
-  m_LocalPosition: {x: 12.28, y: 2.46, z: -2}
+  m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
+  m_LocalPosition: {x: 12.78, y: 1.82, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7053607341624977910}
   m_Father: {fileID: 8076401422937275626}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 26}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
 --- !u!1 &7307991025972405233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2267,7 +2267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8220397157908515227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18, y: 0, z: -2}
+  m_LocalPosition: {x: 18, y: -0.14, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2303,7 +2303,7 @@ MonoBehaviour:
   - m_EditModeType: 1
     m_Knots:
     - Position:
-        x: -0.3
+        x: -0.4
         y: 0
         z: 0
       TangentIn:
@@ -2342,65 +2342,65 @@ MonoBehaviour:
     - Mode: 2
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
-      - Distance: 0.27228668
+      - Distance: -1
+        T: -1
+      - Distance: 0.31689477
         T: 0.03448276
-      - Distance: 0.5606104
+      - Distance: 0.73484504
         T: 0.06896552
-      - Distance: 0.86360073
+      - Distance: 1.2461836
         T: 0.10344828
-      - Distance: 1.1798868
+      - Distance: 1.8432465
         T: 0.13793103
-      - Distance: 1.5080991
+      - Distance: 2.5183616
         T: 0.1724138
-      - Distance: 1.8468665
+      - Distance: 3.2638617
         T: 0.20689656
-      - Distance: 2.1948183
+      - Distance: 4.072079
         T: 0.2413793
-      - Distance: 2.5505853
+      - Distance: 4.9353466
         T: 0.27586207
-      - Distance: 2.9127955
+      - Distance: 5.8459945
         T: 0.31034482
-      - Distance: 3.2800803
+      - Distance: 6.7963576
         T: 0.3448276
-      - Distance: 3.651068
+      - Distance: 7.7787642
         T: 0.37931034
-      - Distance: 4.0243893
+      - Distance: 8.785549
         T: 0.41379312
-      - Distance: 4.3986726
+      - Distance: 9.809041
         T: 0.44827586
-      - Distance: 4.7725496
+      - Distance: 10.841574
         T: 0.4827586
-      - Distance: 5.1446486
+      - Distance: 11.875479
         T: 0.51724136
-      - Distance: 5.5136013
+      - Distance: 12.903088
         T: 0.55172414
-      - Distance: 5.878036
+      - Distance: 13.916734
         T: 0.5862069
-      - Distance: 6.236583
+      - Distance: 14.908746
         T: 0.62068963
-      - Distance: 6.5878744
+      - Distance: 15.871461
         T: 0.6551724
-      - Distance: 6.930539
+      - Distance: 16.797207
         T: 0.6896552
-      - Distance: 7.2632074
+      - Distance: 17.678316
         T: 0.7241379
-      - Distance: 7.5845118
+      - Distance: 18.507124
         T: 0.7586207
-      - Distance: 7.893082
+      - Distance: 19.27596
         T: 0.79310346
-      - Distance: 8.1875515
+      - Distance: 19.97716
         T: 0.82758623
-      - Distance: 8.466549
+      - Distance: 20.60305
         T: 0.86206895
-      - Distance: 8.728712
+      - Distance: 21.145975
         T: 0.8965517
-      - Distance: 8.9726715
+      - Distance: 21.598263
         T: 0.9310345
-      - Distance: 9.197066
+      - Distance: 21.952261
         T: 0.9655172
-      - Distance: 9.400532
+      - Distance: 22.200315
         T: 1
     - Mode: 2
       Tension: 0.5
@@ -2508,7 +2508,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -5.0120397, y: -0.000000059604645}
+  m_Offset: {x: -5.0278783, y: -0.000000059604645}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2519,7 +2519,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.521699, y: 0.05557978}
+  m_Size: {x: 9.317088, y: 0.05557978}
   m_EdgeRadius: 0
 --- !u!1 &8935419619207026962
 GameObject:
