@@ -35,6 +35,8 @@ public class SplineGen : MonoBehaviour
     public Quaternion offsetRot;
     public GameObject spriteHolder;
 
+    private bool gameOver = false;
+
     //public delegate void PauseGame();
     //public static event PauseGame pauseG;
 
@@ -100,11 +102,14 @@ public class SplineGen : MonoBehaviour
 
     public void StartPlane()
     {
-        if (gameObject.GetComponent<MoveAlongSpline>().spline != null)
+        if (gameOver == false)
         {
-            gameObject.GetComponent<MoveAlongSpline>().moving = true;
+            if (gameObject.GetComponent<MoveAlongSpline>().spline != null)
+            {
+                gameObject.GetComponent<MoveAlongSpline>().moving = true;
+            }
+            paused = false;
         }
-        paused = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -115,6 +120,7 @@ public class SplineGen : MonoBehaviour
             {
                 if (inAir == true && collision.gameObject.GetComponent<SplineGen>().inAir == true)
                 {
+                    gameOver = true;
                     Debug.Log("Plane Collision");
                     var camera = GameObject.Find("Main Camera");
                     camera.GetComponent<MouseCont>().StopGame();
@@ -122,6 +128,7 @@ public class SplineGen : MonoBehaviour
                 }
                 else if (inAir == false && collision.gameObject.GetComponent<SplineGen>().inAir == false)
                 {
+                    gameOver=true;
                     Debug.Log("Plane Collision");
                     var camera = GameObject.Find("Main Camera");
                     camera.GetComponent<MouseCont>().StopGame();
@@ -132,6 +139,7 @@ public class SplineGen : MonoBehaviour
 
         if(collision.gameObject.CompareTag("FailCollider"))
         {
+            gameOver = true;
             var camera = GameObject.Find("Main Camera");
             camera.GetComponent<MouseCont>().StopGame();
             camera.GetComponent<CameraCont>().EndGame(gameObject);
