@@ -6,7 +6,6 @@ public class CameraCont : MonoBehaviour
 {
 
     //private GameObject zoomObj;
-    private bool gameOver = false;
     private Vector3 zoomPos;
     private Quaternion zoomRot;
 
@@ -33,7 +32,6 @@ public class CameraCont : MonoBehaviour
         zoomPos = new Vector3(cPlane.transform.position.x, cPlane.transform.position.y, -5);
         zoomRot = cPlane.transform.rotation;
         zoomRot.eulerAngles = new Vector3(0,0,zoomRot.z);
-        gameOver = true;
         StartCoroutine("MoveCamera");
     }
 

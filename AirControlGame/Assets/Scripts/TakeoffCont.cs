@@ -23,6 +23,8 @@ public class TakeoffCont : MonoBehaviour
     public float scale = 1f;
     public bool TakeoffStarted = false;
 
+    public AudioClip audioClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -153,6 +155,12 @@ public class TakeoffCont : MonoBehaviour
     public void PlaneSCore()
     {
         gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+    }
+
+    public void PlayTakeoffSound()
+    {
+        gameObject.GetComponent<AudioSource>().clip = audioClip;
+        gameObject.GetComponent<AudioSource>().Play();
     }
 
     IEnumerator InAirFlash()

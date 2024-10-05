@@ -168,7 +168,6 @@ public class MouseCont : MonoBehaviour
 
                     animator.SplineUpadte(tSpline);
 
-                    //tPlane.GetComponent<SplineAnimate>().Container = tSpline;
                     tPlane.GetComponent<SplineGen>().enabled = true;
                     tPlane.GetComponent<SplineGen>().nSpline = tSpline;
                     tPlane.GetComponent<SplineGen>().oldSpline = tSpline.gameObject;
@@ -176,11 +175,10 @@ public class MouseCont : MonoBehaviour
 
                     tPlane.GetComponent<MoveAlongSpline>().moving = true;
                     tPlane.GetComponent<TakeoffCont>().TakeoffStarted = true;
-                    //Debug.Log("SplineAnimPLay Success");
+                    tPlane.GetComponent<TakeoffCont>().PlayTakeoffSound();
                     grabbedPlane = false;
                     takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList.Remove(tPlane);
                     takeoffQueue.GetComponent<TakeoffPlaneSpawner>().UpdateDisplay();
-                    //tPlane.GetComponent<TakeoffCont>().inAir = true;
                     tPlane = null;
                     currentPlane = null;
 
