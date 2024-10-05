@@ -112,7 +112,6 @@ public class MouseCont : MonoBehaviour
                             dist = Vector3.Distance(hit.collider.gameObject.transform.position, splinePoints[splinePoints.Count - 1]);
                             if (dist > pointDistance)
                             {
-                                //Debug.Log("Hit: " + hit.collider.gameObject.name);
                                 var hitPoint = new Vector3(hit.point.x, hit.point.y, -2);
                                 splinePoints.Add(hitPoint);
                                 splineRot.Add(gameObject.transform.rotation);

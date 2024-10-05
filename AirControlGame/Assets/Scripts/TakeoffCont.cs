@@ -23,7 +23,8 @@ public class TakeoffCont : MonoBehaviour
     public float scale = 1f;
     public bool TakeoffStarted = false;
 
-    public AudioClip audioClip;
+    public AudioClip TakeoffClip;
+    public AudioClip onGoalClip;
 
     // Start is called before the first frame update
     void Start()
@@ -110,6 +111,8 @@ public class TakeoffCont : MonoBehaviour
             if (inAir == true)
             {
                 radioFlash.SetActive(true);
+                gameObject.GetComponent<AudioSource>().clip = onGoalClip;
+                gameObject.GetComponent<AudioSource>().Play();
             }
         }
         else if(name == "EastGoal" && goal == 1)
@@ -120,6 +123,8 @@ public class TakeoffCont : MonoBehaviour
             if (inAir == true)
             {
                 radioFlash.SetActive(true);
+                gameObject.GetComponent<AudioSource>().clip = onGoalClip;
+                gameObject.GetComponent<AudioSource>().Play();
             }
         }
         else if(name == "SouthGoal" && goal == 2)
@@ -130,6 +135,8 @@ public class TakeoffCont : MonoBehaviour
             if (inAir == true)
             {
                 radioFlash.SetActive(true);
+                gameObject.GetComponent<AudioSource>().clip = onGoalClip;
+                gameObject.GetComponent<AudioSource>().Play();
             }
         }
         else if(name == "WestGoal" && goal == 3)
@@ -140,6 +147,8 @@ public class TakeoffCont : MonoBehaviour
             if (inAir == true)
             {
                 radioFlash.SetActive(true);
+                gameObject.GetComponent<AudioSource>().clip = onGoalClip;
+                gameObject.GetComponent<AudioSource>().Play();
             }
         }
     }
@@ -159,7 +168,7 @@ public class TakeoffCont : MonoBehaviour
 
     public void PlayTakeoffSound()
     {
-        gameObject.GetComponent<AudioSource>().clip = audioClip;
+        gameObject.GetComponent<AudioSource>().clip = TakeoffClip;
         gameObject.GetComponent<AudioSource>().Play();
     }
 

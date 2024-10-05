@@ -191,7 +191,8 @@ MonoBehaviour:
   speed: 0.1
   scale: 1
   TakeoffStarted: 0
-  audioClip: {fileID: 8300000, guid: 15cb9890299766440988f047cebb9d70, type: 3}
+  TakeoffClip: {fileID: 8300000, guid: 15cb9890299766440988f047cebb9d70, type: 3}
+  onGoalClip: {fileID: 8300000, guid: a173f0a233d004a4987aac5b98d7e4bb, type: 3}
 --- !u!114 &8423383853697841857
 MonoBehaviour:
   m_ObjectHideFlags: 0

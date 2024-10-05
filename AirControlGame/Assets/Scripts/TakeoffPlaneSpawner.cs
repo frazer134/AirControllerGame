@@ -85,7 +85,7 @@ public class TakeoffPlaneSpawner : MonoBehaviour
         for(int i =0; i<= takeoffList.Count-1; i++)
         {
             var pos = gameObject.transform.position;
-            Vector3 posOffset = new Vector3(i*offset, 1, 2);
+            Vector3 posOffset = new Vector3(1, i*offset, 2);
             pos = pos + posOffset;
             takeoffList[i].transform.position = pos;
         }

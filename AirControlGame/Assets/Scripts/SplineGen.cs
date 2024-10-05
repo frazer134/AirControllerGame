@@ -139,10 +139,13 @@ public class SplineGen : MonoBehaviour
 
         if(collision.gameObject.CompareTag("FailCollider"))
         {
-            gameOver = true;
-            var camera = GameObject.Find("Main Camera");
-            camera.GetComponent<MouseCont>().StopGame();
-            camera.GetComponent<CameraCont>().EndGame(gameObject);
+            if (inAir == true)
+            {
+                gameOver = true;
+                var camera = GameObject.Find("Main Camera");
+                camera.GetComponent<MouseCont>().StopGame();
+                camera.GetComponent<CameraCont>().EndGame(gameObject);
+            }
         }
     }
 

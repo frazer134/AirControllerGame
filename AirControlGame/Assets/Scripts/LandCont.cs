@@ -17,6 +17,8 @@ public class LandCont : MonoBehaviour
     public float speed = 2f;
     public float scale = 2f;
 
+    public AudioClip landClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,6 +93,9 @@ public class LandCont : MonoBehaviour
 
     public void LandPlane(Collider2D collision)
     {
+        gameObject.GetComponent<AudioSource>().clip = landClip;
+        gameObject.GetComponent<AudioSource>().Play();
+
         var runwayShell = collision.gameObject.transform.parent;
         var runwayStart = runwayShell.transform.Find("TakeoffStart");
         var runwayEnd = runwayShell.transform.Find("RunwayEnd");
