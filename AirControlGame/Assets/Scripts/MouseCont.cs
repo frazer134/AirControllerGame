@@ -45,51 +45,54 @@ public class MouseCont : MonoBehaviour
         {
             RaycastHit2D hitP = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             //Debug.Log("Hit: " + hitP.collider.gameObject.name);
-            if(hitP.collider.CompareTag("TakeoffQueue"))
+            if (hitP.collider != null)
             {
-                if (grabbedPlane == false)
+                if (hitP.collider.CompareTag("TakeoffQueue"))
                 {
-                    //Debug.Log("Queue Hit");
-                    tPlane = takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList[0];
-                    grabbedPlane = true;
-                    if (pauseG != null)
+                    if (grabbedPlane == false)
                     {
-                        pauseG();
-                    }
-                }
-            }
-            else if (hitP.collider.CompareTag("Plane"))
-            {
-                if (hitP.collider.gameObject.GetComponent<TakeoffCont>() != null)
-                {
-                    if (hitP.collider.gameObject.GetComponent<TakeoffCont>().onGoal == true && hitP.collider.gameObject.GetComponent<TakeoffCont>().inAir == true)
-                    {
-                        hitP.collider.gameObject.GetComponent<TakeoffCont>().PlaneSCore();
-                    }
-                    else
-                    {
-                        if (hitP.collider.gameObject.GetComponent<TakeoffCont>().inAir == true)
+                        //Debug.Log("Queue Hit");
+                        tPlane = takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList[0];
+                        grabbedPlane = true;
+                        if (pauseG != null)
                         {
-                            //Debug.Log("Plane Hit");
-                            currentPlane = hitP.collider.gameObject;
-                            splinePoints.Add(currentPlane.transform.position);
-                            splineRot.Add(gameObject.transform.rotation);
-                            if (pauseG != null)
-                            {
-                                pauseG();
-                            }
+                            pauseG();
                         }
                     }
                 }
-                else
+                else if (hitP.collider.CompareTag("Plane"))
                 {
-                    //Debug.Log("Plane Hit");
-                    currentPlane = hitP.collider.gameObject;
-                    splinePoints.Add(currentPlane.transform.position);
-                    splineRot.Add(gameObject.transform.rotation);
-                    if (pauseG != null)
+                    if (hitP.collider.gameObject.GetComponent<TakeoffCont>() != null)
                     {
-                        pauseG();
+                        if (hitP.collider.gameObject.GetComponent<TakeoffCont>().onGoal == true && hitP.collider.gameObject.GetComponent<TakeoffCont>().inAir == true)
+                        {
+                            hitP.collider.gameObject.GetComponent<TakeoffCont>().PlaneSCore();
+                        }
+                        else
+                        {
+                            if (hitP.collider.gameObject.GetComponent<TakeoffCont>().inAir == true)
+                            {
+                                //Debug.Log("Plane Hit");
+                                currentPlane = hitP.collider.gameObject;
+                                splinePoints.Add(currentPlane.transform.position);
+                                splineRot.Add(gameObject.transform.rotation);
+                                if (pauseG != null)
+                                {
+                                    pauseG();
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //Debug.Log("Plane Hit");
+                        currentPlane = hitP.collider.gameObject;
+                        splinePoints.Add(currentPlane.transform.position);
+                        splineRot.Add(gameObject.transform.rotation);
+                        if (pauseG != null)
+                        {
+                            pauseG();
+                        }
                     }
                 }
             }
