@@ -62,10 +62,6 @@ public class LandCont : MonoBehaviour
                 {
                     firstCol = true;
                 }
-                else if(landing == false)
-                {
-                    LandPlane(collision);
-                }
             }
             else
             {
@@ -83,11 +79,24 @@ public class LandCont : MonoBehaviour
                 {
                     firstCol = true;
                 }
-                else if(landing == false)
-                {
-                    LandPlane(collision);
-                }
             }
+        }
+
+        if(collision.CompareTag("CenterLand"))
+        {
+            if(landing == false && firstCol == true)
+            {
+                LandPlane(collision);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("CenterLand") && landing == true)
+        {
+            Debug.Log("Hitbox Hit");
+            gameObject.GetComponent<SplineGen>().inAir = false;
         }
     }
 

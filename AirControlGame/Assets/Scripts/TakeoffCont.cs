@@ -58,6 +58,7 @@ public class TakeoffCont : MonoBehaviour
             if(gameObject.GetComponent<MoveAlongSpline>().GetDistance() == 0 && gameObject.GetComponent<MoveAlongSpline>().moving == false)
             {
                 inAir = true;
+                onGoal = false;
                 gameObject.GetComponent<SplineGen>().inAir = true;
                 gameObject.GetComponent<SplineGen>().paused = false;
                 radioFlash.SetActive(true);

@@ -2964,7 +2964,7 @@ GameObject:
   - component: {fileID: 7693614107923747407}
   m_Layer: 0
   m_Name: AproachSplineLong (1)
-  m_TagString: ApproachLong
+  m_TagString: CenterLand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

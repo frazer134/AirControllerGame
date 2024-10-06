@@ -254,7 +254,7 @@ public class MouseCont : MonoBehaviour
                     {
                         //Debug.Log("Plane Follow Mouse");
                         RaycastHit2D hit5 = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                        var mouseP = new Vector3(hit5.point.x, hit5.point.y, -2);
+                        var mouseP = new Vector3(hit5.point.x, hit5.point.y, -1.9f);
                         tPlane.transform.position = mouseP;
                     }
                 }
