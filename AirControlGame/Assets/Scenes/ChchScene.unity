@@ -1995,7 +1995,7 @@ MonoBehaviour:
   planeObj: {fileID: 5155170223396312889, guid: 73e04ce75c780ea45a74b12ee9647e0f, type: 3}
   offset: -3
   timePassed: 0
-  spawnTime: 50
+  spawnTime: 10
   uiCanvas: {fileID: 12740202}
   timer: 30
   maxplanes: 5

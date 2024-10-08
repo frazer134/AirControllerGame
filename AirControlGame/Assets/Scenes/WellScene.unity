@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 438454905}
   m_Layer: 0
   m_Name: Coll2
-  m_TagString: Untagged
+  m_TagString: FailCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1549,7 +1549,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 181, y: -51.75}
+  m_AnchoredPosition: {x: 181, y: 0}
   m_SizeDelta: {x: 340.97, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &716193229
@@ -1838,7 +1838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 181, y: -30.25}
+  m_AnchoredPosition: {x: 181, y: 0}
   m_SizeDelta: {x: 340.97, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1042147645
@@ -2182,7 +2182,7 @@ GameObject:
   - component: {fileID: 1275803390}
   m_Layer: 0
   m_Name: Coll1
-  m_TagString: Untagged
+  m_TagString: FailCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3660,7 +3660,7 @@ GameObject:
   - component: {fileID: 1631032776}
   m_Layer: 0
   m_Name: Coll3
-  m_TagString: Untagged
+  m_TagString: FailCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5570,7 +5570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runwayList:
   - {fileID: 1798788798}
-  minTime: 50
+  minTime: 10
   maxTime: 200
   timePassed: 0
   flashTime: 0.4
@@ -5626,7 +5626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -659, y: 73}
+  m_AnchoredPosition: {x: -659, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1707455967
