@@ -1,7 +1,10 @@
 using Assets.Scenes;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.GameCenter;
 using UnityEngine.Splines;
 
 public class LandCont : MonoBehaviour
@@ -61,6 +64,9 @@ public class LandCont : MonoBehaviour
                 if (landing == false && firstCol == false)
                 {
                     firstCol = true;
+                    var tempG = collision.gameObject.transform.parent;
+                    Vector3 centPos = FindCenterPoint(tempG.transform.parent.Find("Center").gameObject);
+                    LandPlane(collision,centPos);
                 }
             }
             else
@@ -78,6 +84,9 @@ public class LandCont : MonoBehaviour
                 if (landing == false && firstCol == false)
                 {
                     firstCol = true;
+                    var tempG = collision.gameObject.transform.parent;
+                    Vector3 centPos = FindCenterPoint(tempG.transform.parent.Find("Center").gameObject);
+                    LandPlane(collision, centPos);
                 }
             }
         }
@@ -86,7 +95,7 @@ public class LandCont : MonoBehaviour
         {
             if(landing == false && firstCol == true)
             {
-                LandPlane(collision);
+                //LandPlane(collision);
             }
         }
     }
@@ -100,21 +109,23 @@ public class LandCont : MonoBehaviour
         }
     }
 
-    public void LandPlane(Collider2D collision)
+    public void LandPlane(Collider2D collision, Vector3 centerP)
     {
         gameObject.GetComponent<AudioSource>().clip = landClip;
         gameObject.GetComponent<AudioSource>().Play();
 
-        var runwayShell = collision.gameObject.transform.parent;
+        var runwayShell = collision.gameObject.transform.parent.gameObject.transform.parent;
         var runwayStart = runwayShell.transform.Find("TakeoffStart");
         var runwayEnd = runwayShell.transform.Find("RunwayEnd");
 
         var navPoints = new List<Vector3>();
         navPoints.Add(gameObject.transform.position);
+        navPoints.Add(centerP);
         navPoints.Add(runwayStart.transform.position);
         navPoints.Add(runwayEnd.transform.position);
 
         var rot = new List<Quaternion>();
+        rot.Add(new Quaternion(0, 0, 0, 0));
         rot.Add(new Quaternion(0, 0, 0, 0));
         rot.Add(new Quaternion(0, 0, 0, 0));
         rot.Add(new Quaternion(0, 0, 0, 0));
@@ -132,5 +143,33 @@ public class LandCont : MonoBehaviour
             speed = 0.2f;
         }
         gameObject.GetComponent<MoveAlongSpline>().speed = altSpeed;
+    }
+
+    private Vector3 FindCenterPoint(GameObject center)
+    {
+        /**
+        float dist = 10000;
+        Vector3 knot = new Vector3(0,0,0);
+        var splineC = center.GetComponent<SplineContainer>().Spline;
+        foreach(BezierKnot k in splineC.Knots)
+        {
+            if(Vector3.Distance(gameObject.transform.position, k.Position) < dist)
+            {
+                dist = Vector3.Distance(gameObject.transform.position, k.Position);
+                knot = k.Position;
+            }
+        }
+
+        //knot = center.transform.TransformVector(knot);
+        return knot;
+        **/
+        var splineC = center.GetComponent<SplineContainer>().Spline;
+
+        SplineUtility.GetNearestPoint(splineC, gameObject.transform.position, out float3 nearest, out float t);
+
+        Vector3 knot = new Vector3(nearest.x, nearest.y, nearest.z);
+        //knot = center.transform.worldToLocalMatrix * knot;
+
+        return knot;
     }
 }

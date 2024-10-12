@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject score;
     public GameObject WindDir;
     public GameObject timer;
+    public GameObject LandRush;
 
     public GameObject wrongRunway;
 
@@ -95,9 +96,43 @@ public class UIManager : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
+    public void RushStarted()
+    {
+        LandRush.GetComponent<TextMeshProUGUI>().text = "Rush Incoming";
+        coroutine = FlashUI(LandRush);
+        StartCoroutine(coroutine);
+    }
+
+    public void RushEnded()
+    {
+        LandRush.GetComponent<TextMeshProUGUI>().text = "Rush Over";
+        coroutine = FlashUI(LandRush);
+        StartCoroutine(coroutine);
+    }
+
     private IEnumerator TurnOffUI(GameObject obj, float time)
     {
         yield return new WaitForSeconds(time);
+        obj.SetActive(false);
+    }
+
+    private IEnumerator FlashUI(GameObject obj)
+    {
+        yield return new WaitForSeconds(0.2f);
+        obj.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        obj.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        obj.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        obj.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        obj.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        obj.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        obj.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
         obj.SetActive(false);
     }
 }

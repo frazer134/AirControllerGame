@@ -8,9 +8,9 @@ using UnityEngine.Splines;
 public class LandingPlaneSpawn : MonoBehaviour
 {
     public GameObject plane;
+    public SplineContainer spline;
 
     public float minTime;
-    public float maxTime;
     public float time;
 
     public Sprite shortP;
@@ -34,15 +34,7 @@ public class LandingPlaneSpawn : MonoBehaviour
         {
             if (time > minTime)
             {
-                if (Random.Range(0, 10) == 7)
-                {
-                    SpawnPlane();
-                    //var nPlane = Instantiate(plane);
-                    //nPlane.GetComponent<SplineAnimate>().Container = startSpline;
-                    //nPlane.GetComponent<SplineAnimate>().Play();
-                    //time = 0;
-                }
-                else if (time > maxTime)
+                if (Random.Range(0, 25) == 7)
                 {
                     SpawnPlane();
                     //var nPlane = Instantiate(plane);
@@ -65,13 +57,16 @@ public class LandingPlaneSpawn : MonoBehaviour
     private void SpawnPlane()
     {
         Quaternion knotRot = new Quaternion();
-        knotRot.eulerAngles = new Vector3(0, 0, -90);
+        //knotRot.eulerAngles = new Vector3(0, 0, -90);
+        knotRot = gameObject.transform.rotation;
         
 
         // 1 in 5 chance of spawning long land plane
         if (Random.Range(1, 5) == 3)
         {
             var nPlane = Instantiate(plane, gameObject.transform.position, knotRot);
+            //nPlane.GetComponent<MoveAlongSpline>().spline = spline;
+            //nPlane.GetComponent<MoveAlongSpline>().moving = true;
             nPlane.GetComponent<SplineGen>().uiCanvas= canvasUI;
             nPlane.GetComponent<SplineGen>().inAir = true;
             nPlane.GetComponent<SplineGen>().started = true;
@@ -82,6 +77,8 @@ public class LandingPlaneSpawn : MonoBehaviour
         else
         {
             var nPlane = Instantiate(plane, gameObject.transform.position, knotRot);
+            //nPlane.GetComponent<MoveAlongSpline>().spline = spline;
+            //nPlane.GetComponent<MoveAlongSpline>().moving = true;
             nPlane.GetComponent<SplineGen>().uiCanvas = canvasUI;
             nPlane.GetComponent<SplineGen>().inAir = true;
             nPlane.GetComponent<SplineGen>().started = true;
