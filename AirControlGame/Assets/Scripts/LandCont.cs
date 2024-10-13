@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.GameCenter;
 using UnityEngine.Splines;
@@ -15,12 +16,14 @@ public class LandCont : MonoBehaviour
 
     public bool inAir = true;
 
-    public bool firstCol = false;
+    public bool outside = true;
 
     public float speed = 2f;
     public float scale = 2f;
 
     public AudioClip landClip;
+    public Material pathMat;
+    public Mesh mesh;
 
     // Start is called before the first frame update
     void Start()
@@ -61,12 +64,19 @@ public class LandCont : MonoBehaviour
         {
             if (collision.CompareTag("ApproachLong"))
             {
-                if (landing == false && firstCol == false)
+                if (landing == false)
                 {
-                    firstCol = true;
-                    var tempG = collision.gameObject.transform.parent;
-                    Vector3 centPos = FindCenterPoint(tempG.transform.parent.Find("Center").gameObject);
-                    LandPlane(collision,centPos);
+                    if (outside)
+                    {
+                        var tempG = collision.gameObject.transform.parent;
+                        Vector3 centPos = FindCenterPoint(tempG.transform.parent.Find("Center").gameObject);
+                        LandPlane(collision, centPos);
+                        outside = false;
+                    }
+                    else
+                    {
+                        outside = true;
+                    }
                 }
             }
             else
@@ -81,21 +91,20 @@ public class LandCont : MonoBehaviour
         {
             if(collision.CompareTag("ApproachLong")||collision.CompareTag("Approach"))
             {
-                if (landing == false && firstCol == false)
+                if (landing == false)
                 {
-                    firstCol = true;
-                    var tempG = collision.gameObject.transform.parent;
-                    Vector3 centPos = FindCenterPoint(tempG.transform.parent.Find("Center").gameObject);
-                    LandPlane(collision, centPos);
+                    if (outside)
+                    {
+                        var tempG = collision.gameObject.transform.parent;
+                        Vector3 centPos = FindCenterPoint(tempG.transform.parent.Find("Center").gameObject);
+                        LandPlane(collision, centPos);
+                        outside = false;
+                    }
+                    else
+                    {
+                        outside= true;
+                    }
                 }
-            }
-        }
-
-        if(collision.CompareTag("CenterLand"))
-        {
-            if(landing == false && firstCol == true)
-            {
-                //LandPlane(collision);
             }
         }
     }
@@ -129,10 +138,17 @@ public class LandCont : MonoBehaviour
         rot.Add(new Quaternion(0, 0, 0, 0));
         rot.Add(new Quaternion(0, 0, 0, 0));
         rot.Add(new Quaternion(0, 0, 0, 0));
-        var lSpline = SplineMaker.SplineGenerator(navPoints, rot, null);
+        var lSpline = SplineMaker.SplineGenerator(navPoints, rot, mesh);
 
         gameObject.GetComponent<MoveAlongSpline>().SplineUpadte(lSpline);
         gameObject.GetComponent<MoveAlongSpline>().moving = true;
+
+        if (gameObject.GetComponent<SplineGen>().nSpline != null)
+        {
+            var oldSpline = gameObject.GetComponent<SplineGen>().nSpline;
+            gameObject.GetComponent<SplineGen>().nSpline = lSpline;
+            Destroy(oldSpline.gameObject);
+        }
 
         landing = true;
 
@@ -143,33 +159,36 @@ public class LandCont : MonoBehaviour
             speed = 0.2f;
         }
         gameObject.GetComponent<MoveAlongSpline>().speed = altSpeed;
+
+        if(lSpline.gameObject.GetComponent<SplineExtrude>().enabled == false)
+        {
+            lSpline.gameObject.GetComponent<MeshRenderer>().material = pathMat;
+            lSpline.gameObject.GetComponent<SplineExtrude>().enabled = true;
+            lSpline.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            lSpline.gameObject.GetComponent<SplineExtrude>().Rebuild();
+
+        }
     }
 
     private Vector3 FindCenterPoint(GameObject center)
     {
-        /**
-        float dist = 10000;
-        Vector3 knot = new Vector3(0,0,0);
-        var splineC = center.GetComponent<SplineContainer>().Spline;
-        foreach(BezierKnot k in splineC.Knots)
-        {
-            if(Vector3.Distance(gameObject.transform.position, k.Position) < dist)
-            {
-                dist = Vector3.Distance(gameObject.transform.position, k.Position);
-                knot = k.Position;
-            }
-        }
-
-        //knot = center.transform.TransformVector(knot);
-        return knot;
-        **/
         var splineC = center.GetComponent<SplineContainer>().Spline;
 
         SplineUtility.GetNearestPoint(splineC, gameObject.transform.position, out float3 nearest, out float t);
 
-        Vector3 knot = new Vector3(nearest.x, nearest.y, nearest.z);
+        Vector3 knot = new Vector3(nearest.x, nearest.y, 0f);
         //knot = center.transform.worldToLocalMatrix * knot;
 
+        knot = center.transform.localToWorldMatrix.MultiplyPoint(knot);
+
         return knot;
+    }
+
+    public void ResetInAir()
+    {
+        gameObject.transform.localScale = new Vector3(2, 2, 2);
+        speed = 2f;
+        inAir = true;
+        landing = false;
     }
 }

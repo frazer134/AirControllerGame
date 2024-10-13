@@ -89,6 +89,10 @@ public class MouseCont : MonoBehaviour
                         currentPlane = hitP.collider.gameObject;
                         splinePoints.Add(currentPlane.transform.position);
                         splineRot.Add(gameObject.transform.rotation);
+                        if (currentPlane.GetComponent<LandCont>() != null)
+                        {
+                            currentPlane.GetComponent<LandCont>().ResetInAir();
+                        }
                         if (pauseG != null)
                         {
                             pauseG();
@@ -264,10 +268,7 @@ public class MouseCont : MonoBehaviour
 
     public void StopGame()
     {
-        if(pauseG!= null)
-        {
-            pauseG();
-        }
+        pauseG?.Invoke();
     }
 
     public void DrawPath(List<Vector3> pathPoints, List<Quaternion> pathRot)
