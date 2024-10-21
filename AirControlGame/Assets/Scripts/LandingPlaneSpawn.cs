@@ -96,4 +96,42 @@ public class LandingPlaneSpawn : MonoBehaviour
     {
         gameP = false;
     }
+
+    public GameObject TutorialSpawnner(bool longLand)
+    {
+        Quaternion knotRot = new Quaternion();
+        //knotRot.eulerAngles = new Vector3(0, 0, -90);
+        knotRot = gameObject.transform.rotation;
+
+
+        // 1 in 5 chance of spawning long land plane
+        if (longLand == true)
+        {
+            var nPlane = Instantiate(plane, gameObject.transform.position, knotRot);
+            //nPlane.GetComponent<MoveAlongSpline>().spline = spline;
+            //nPlane.GetComponent<MoveAlongSpline>().moving = true;
+            nPlane.GetComponent<SplineGen>().uiCanvas = canvasUI;
+            nPlane.GetComponent<SplineGen>().inAir = true;
+            nPlane.GetComponent<SplineGen>().started = true;
+            nPlane.GetComponent<LandCont>().longLand = true;
+            nPlane.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = longP;
+            time = 0;
+
+            return nPlane;
+        }
+        else
+        {
+            var nPlane = Instantiate(plane, gameObject.transform.position, knotRot);
+            //nPlane.GetComponent<MoveAlongSpline>().spline = spline;
+            //nPlane.GetComponent<MoveAlongSpline>().moving = true;
+            nPlane.GetComponent<SplineGen>().uiCanvas = canvasUI;
+            nPlane.GetComponent<SplineGen>().inAir = true;
+            nPlane.GetComponent<SplineGen>().started = true;
+            nPlane.GetComponent<LandCont>().longLand = false;
+            nPlane.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = shortP;
+            time = 0;
+
+            return nPlane;
+        }
+    }
 }
