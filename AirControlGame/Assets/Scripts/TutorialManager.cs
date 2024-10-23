@@ -21,7 +21,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private LandingPlaneSpawn spawnL1;
     [SerializeField] private LandingPlaneSpawn spawnL2;
 
-    int currentState = 0;
+    [SerializeField] private int currentState = 0;
 
     GameObject plane1;
 
@@ -46,26 +46,36 @@ public class TutorialManager : MonoBehaviour
             var text = uiText.transform.Find("InstText");
             text.GetComponent<TextMeshProUGUI>().text = text2;
         }
+
+        //Step #5
+        if(currentState == 2 && plane1 == null)
+        {
+            uiText.SetActive(true);
+            var text1 = uiText.transform.Find("InstText");
+            text1.GetComponent<TextMeshProUGUI>().text = text3;
+        }
     }
 
     public void NextStep()
     {
         switch(currentState)
         {
-            case 0: LongLand();
+            case 0: LandPlane();
                 break;
-            case 1: Takeoff();
+            case 1: LongLand();
                 break;
-            case 2: TakeoffTimer();
+            case 2: Takeoff();
                 break;
-            case 3: TerrainCollision();
+            case 3: TakeoffTimer();
                 break;
-            case 4: WindDir();
+            case 4: TerrainCollision();
+                break;
+            case 5: WindDir();
                 break;
         }
     }
 
-    private void LongLand()
+    private void LandPlane()
     {
         //Step #2
         currentState = currentState + 1;
@@ -73,9 +83,21 @@ public class TutorialManager : MonoBehaviour
         plane1 = spawnL1.TutorialSpawnner(false);
     }
 
+    private void LongLand()
+    {
+        //Step #4
+        currentState = currentState + 1;
+        uiText.SetActive(false);
+        plane1 = spawnL1.TutorialSpawnner(true);
+    }
+
     private void Takeoff()
     {
-
+        //Step #6
+        currentState = currentState + 1;
+        uiText.SetActive(false);
+        plane1 = spawnT.TutorialSpwan(1);
+        Runway2.SetActive(true);
     }
 
     private void TakeoffTimer()

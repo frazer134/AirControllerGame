@@ -297,8 +297,12 @@ MonoBehaviour:
   uiText: {fileID: 2042593941}
   text1: Hello, welcome to your first day as an air traffic controller.  You have
     a plane incoming click and drag the plane into the landing cone of the runway.
-  text2: Well done you made it to step2
-  text3: 
+  text2: Well done, but you have another plane incoming and this one is larger. 
+    Red planes need a long approach so make sure it hits the red segment of the runway
+    approach.
+  text3: Good job, You have a plane waiting to take off (Left side of screen).  Click
+    and drag the plane onto a runway, and direct to the edge of the screen depicted
+    by the arrow.  Once the plane reaches the edge click on it.
   text4: 
   text5: 
   text6: 
@@ -306,6 +310,7 @@ MonoBehaviour:
   spawnT: {fileID: 704431646}
   spawnL1: {fileID: 1532472093}
   spawnL2: {fileID: 2065812344}
+  currentState: 0
 --- !u!1 &102011621
 GameObject:
   m_ObjectHideFlags: 0

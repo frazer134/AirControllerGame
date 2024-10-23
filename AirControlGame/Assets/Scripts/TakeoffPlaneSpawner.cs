@@ -100,4 +100,18 @@ public class TakeoffPlaneSpawner : MonoBehaviour
     {
         gameP = false;
     }
+
+    public GameObject TutorialSpwan(int goal)
+    {
+        var nPlane = Instantiate(planeObj);
+        nPlane.GetComponent<SplineGen>().PausePlane();
+        nPlane.GetComponent<SplineGen>().enabled = false;
+        nPlane.GetComponent<SplineGen>().uiCanvas = uiCanvas;
+        takeoffList.Add(nPlane);
+        UpdateDisplay();
+
+        nPlane.GetComponent<TakeoffCont>().goal = goal;
+
+        return nPlane;
+    }
 }
