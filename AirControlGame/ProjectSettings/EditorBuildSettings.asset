@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SydneyScene.unity
     guid: bada620f26c144046b03dbc8923c9a92
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: 82cb3454359b2c440b4d637dac0c8d84
   m_configObjects: {}

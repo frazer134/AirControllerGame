@@ -43,7 +43,7 @@ public class MouseCont : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            RaycastHit2D hitP = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            RaycastHit2D hitP = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Default"));
             //Debug.Log("Hit: " + hitP.collider.gameObject.name);
             if (hitP.collider != null)
             {
@@ -51,12 +51,15 @@ public class MouseCont : MonoBehaviour
                 {
                     if (grabbedPlane == false)
                     {
-                        //Debug.Log("Queue Hit");
-                        tPlane = takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList[0];
-                        grabbedPlane = true;
-                        if (pauseG != null)
+                        if (takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList.Count > 0)
                         {
-                            pauseG();
+                            //Debug.Log("Queue Hit");
+                            tPlane = takeoffQueue.GetComponent<TakeoffPlaneSpawner>().takeoffList[0];
+                            grabbedPlane = true;
+                            if (pauseG != null)
+                            {
+                                pauseG();
+                            }
                         }
                     }
                 }
@@ -116,10 +119,11 @@ public class MouseCont : MonoBehaviour
                         if(splinePoints.Count > 0)
                         {
                             float dist;
-                            dist = Vector3.Distance(hit.collider.gameObject.transform.position, splinePoints[splinePoints.Count - 1]);
+                            var hitPoint = new Vector3(hit.point.x, hit.point.y, -2);
+                            dist = Vector3.Distance(hitPoint, splinePoints[splinePoints.Count - 1]);
                             if (dist > pointDistance)
                             {
-                                var hitPoint = new Vector3(hit.point.x, hit.point.y, -2);
+                                //var hitPoint = new Vector3(hit.point.x, hit.point.y, -2);
                                 splinePoints.Add(hitPoint);
                                 splineRot.Add(gameObject.transform.rotation);
                                 DrawPath(splinePoints, splineRot);

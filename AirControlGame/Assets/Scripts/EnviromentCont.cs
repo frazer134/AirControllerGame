@@ -160,4 +160,9 @@ public class EnviromentCont : MonoBehaviour
     {
         paused = true;
     }
+
+    public void TutorialFlip()
+    {
+        StartCoroutine(FlashUI(2, "Wind: S"));
+    }
 }
