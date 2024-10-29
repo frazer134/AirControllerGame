@@ -1158,7 +1158,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 22.031773
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1206,7 +1206,7 @@ MonoBehaviour:
   splineRot: []
   pTime: 0.2
   time: 0
-  pathMat: {fileID: 2100000, guid: 54b8321c4e9676f4ba705661ce9a7ade, type: 2}
+  pathMat: {fileID: 2100000, guid: 5c2787d4d3ac6664fa242fcd67c8a797, type: 2}
   pathMesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
   tPlane: {fileID: 0}
   takeoffQueue: {fileID: 704431645}
