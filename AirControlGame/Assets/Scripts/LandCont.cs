@@ -13,7 +13,7 @@ public class LandCont : MonoBehaviour
     public bool longLand = false;
     public bool landing = false;
 
-    public bool inAir = true;
+    public bool inAir = false;
 
     public bool outside = true;
 
@@ -114,6 +114,11 @@ public class LandCont : MonoBehaviour
         {
             Debug.Log("Hitbox Hit");
             gameObject.GetComponent<SplineGen>().inAir = false;
+        }
+
+        if(other.gameObject.CompareTag("GoalCollider"))
+        {
+            inAir = true;
         }
     }
 

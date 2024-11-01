@@ -15,6 +15,7 @@ TagManager:
   - FrontCollider
   - FailCollider
   - CenterLand
+  - GoalCollider
   layers:
   - Default
   - TransparentFX

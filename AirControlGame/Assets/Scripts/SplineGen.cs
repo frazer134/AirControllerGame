@@ -37,6 +37,8 @@ public class SplineGen : MonoBehaviour
 
     private bool gameOver = false;
 
+    public GameObject warningFlash;
+
     //public delegate void PauseGame();
     //public static event PauseGame pauseG;
 
@@ -145,6 +147,46 @@ public class SplineGen : MonoBehaviour
                 var camera = GameObject.Find("Main Camera");
                 camera.GetComponent<MouseCont>().StopGame();
                 camera.GetComponent<CameraCont>().EndGame(gameObject);
+            }
+        }
+
+        if(collision.gameObject.CompareTag("GoalCollider"))
+        {
+            if(gameObject.GetComponent<TakeoffCont>() != null)
+            {
+                BoarderHitT(collision.gameObject);
+            }
+            else
+            {
+                BoarderHitL(collision.gameObject);
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("GoalCollider"))
+        {
+            warningFlash.SetActive(false);
+        }
+    }
+
+    private void BoarderHitL(GameObject col)
+    {
+        if (gameObject.GetComponent<LandCont>().inAir == true)
+        {
+            warningFlash.SetActive(true);
+        }
+    }
+
+    private void BoarderHitT(GameObject col)
+    {
+        var Tcon = gameObject.GetComponent<TakeoffCont>();
+        if(Tcon.onGoal == false)
+        {
+            if (gameObject.GetComponent<TakeoffCont>().inAir == true)
+            {
+                warningFlash.SetActive(true);
             }
         }
     }
