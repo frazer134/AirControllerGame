@@ -68,7 +68,7 @@ public class LandingPlaneSpawn : MonoBehaviour
             //nPlane.GetComponent<MoveAlongSpline>().spline = spline;
             //nPlane.GetComponent<MoveAlongSpline>().moving = true;
             nPlane.GetComponent<SplineGen>().uiCanvas= canvasUI;
-            nPlane.GetComponent<SplineGen>().inAir = true;
+            nPlane.GetComponent<SplineGen>().inAir = false;
             nPlane.GetComponent<SplineGen>().started = true;
             nPlane.GetComponent<LandCont>().longLand = true;
             nPlane.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = longP;
@@ -80,7 +80,7 @@ public class LandingPlaneSpawn : MonoBehaviour
             //nPlane.GetComponent<MoveAlongSpline>().spline = spline;
             //nPlane.GetComponent<MoveAlongSpline>().moving = true;
             nPlane.GetComponent<SplineGen>().uiCanvas = canvasUI;
-            nPlane.GetComponent<SplineGen>().inAir = true;
+            nPlane.GetComponent<SplineGen>().inAir = false;
             nPlane.GetComponent<SplineGen>().started = true;
             nPlane.GetComponent<LandCont>().longLand = false;
             nPlane.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = shortP;

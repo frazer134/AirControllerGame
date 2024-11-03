@@ -39,6 +39,8 @@ public class SplineGen : MonoBehaviour
 
     public GameObject warningFlash;
 
+    public AudioClip alarmSFX;
+
     //public delegate void PauseGame();
     //public static event PauseGame pauseG;
 
@@ -149,46 +151,28 @@ public class SplineGen : MonoBehaviour
                 camera.GetComponent<CameraCont>().EndGame(gameObject);
             }
         }
-
-        if(collision.gameObject.CompareTag("GoalCollider"))
-        {
-            if(gameObject.GetComponent<TakeoffCont>() != null)
-            {
-                BoarderHitT(collision.gameObject);
-            }
-            else
-            {
-                BoarderHitL(collision.gameObject);
-            }
-        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("GoalCollider"))
         {
-            warningFlash.SetActive(false);
+            AlarmOff();
+            inAir = true;
         }
     }
 
-    private void BoarderHitL(GameObject col)
+    public void AlarmOn()
     {
-        if (gameObject.GetComponent<LandCont>().inAir == true)
-        {
-            warningFlash.SetActive(true);
-        }
+        warningFlash.SetActive(true);
+        gameObject.GetComponent<AudioSource>().clip = alarmSFX;
+        gameObject.GetComponent<AudioSource>().Play();
     }
 
-    private void BoarderHitT(GameObject col)
+    public void AlarmOff()
     {
-        var Tcon = gameObject.GetComponent<TakeoffCont>();
-        if(Tcon.onGoal == false)
-        {
-            if (gameObject.GetComponent<TakeoffCont>().inAir == true)
-            {
-                warningFlash.SetActive(true);
-            }
-        }
+        warningFlash.SetActive(false);
+        gameObject.GetComponent<AudioSource>().Stop();
     }
 
     public void WrongRunway()

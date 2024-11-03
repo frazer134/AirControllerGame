@@ -26,6 +26,9 @@ public class TakeoffCont : MonoBehaviour
     public AudioClip TakeoffClip;
     public AudioClip onGoalClip;
 
+    public bool onEdge = false;
+    public bool alarmActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,6 +101,33 @@ public class TakeoffCont : MonoBehaviour
         {
             gameObject.transform.localScale = new Vector3(2, 2, 2);
         }
+
+        if(onEdge == true)
+        {
+            Debug.DrawLine(transform.position, transform.position + transform.right * 10f);
+            RaycastHit2D hit1 = Physics2D.Raycast(transform.position, transform.right, 10f, LayerMask.GetMask("FailLayer"));
+            if(hit1.collider != null)
+            {
+                if(hit1.collider.gameObject.CompareTag("FailCollider"))
+                {
+                    if (alarmActive == false)
+                    {
+                        gameObject.GetComponent<SplineGen>().AlarmOn();
+                        alarmActive = true;
+                    }
+                }
+                else
+                {
+                    gameObject.GetComponent<SplineGen>().AlarmOff();
+                    alarmActive = false;
+                }
+            }
+            else
+            {
+                gameObject.GetComponent<SplineGen>().AlarmOff();
+                alarmActive = false;
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -152,13 +182,17 @@ public class TakeoffCont : MonoBehaviour
                 gameObject.GetComponent<AudioSource>().Play();
             }
         }
+        else if(collision.gameObject.CompareTag("GoalCollider"))
+        {
+            onEdge = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "SouthGoal")
+        if (collision.gameObject.CompareTag("GoalCollider"))
         {
-            onGoal = false;
+            onEdge = false;
         }
     }
 

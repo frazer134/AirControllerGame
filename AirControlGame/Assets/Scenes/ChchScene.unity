@@ -1812,7 +1812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &503411642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2418,7 +2418,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 181, y: -51.75}
+  m_AnchoredPosition: {x: 181, y: 0}
   m_SizeDelta: {x: 340.97, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &716193229
@@ -2528,7 +2528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 727751578}
   - component: {fileID: 727751577}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SouthGoal
   m_TagString: GoalCollider
   m_Icon: {fileID: 0}
@@ -2567,7 +2567,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 6.1148663}
+  m_Offset: {x: 0, y: 8.627712}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2578,7 +2578,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 7.105316}
+  m_Size: {x: 80, y: 12.131003}
   m_EdgeRadius: 0
 --- !u!4 &727751578
 Transform:
@@ -2605,7 +2605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 958139660}
   - component: {fileID: 958139661}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fail2
   m_TagString: FailCollider
   m_Icon: {fileID: 0}
@@ -2707,7 +2707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 181, y: -30.25}
+  m_AnchoredPosition: {x: 181, y: 0}
   m_SizeDelta: {x: 340.97, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1042147645
@@ -2817,7 +2817,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1202949474}
   - component: {fileID: 1202949475}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fail1
   m_TagString: FailCollider
   m_Icon: {fileID: 0}
@@ -2894,7 +2894,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1206267073}
   - component: {fileID: 1206267072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WestGoal
   m_TagString: GoalCollider
   m_Icon: {fileID: 0}
@@ -2933,7 +2933,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 5.0463743, y: 0}
+  m_Offset: {x: 3.5521965, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2944,7 +2944,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.496557, y: 50}
+  m_Size: {x: 6.5082016, y: 50}
   m_EdgeRadius: 0
 --- !u!4 &1206267073
 Transform:
@@ -2976,7 +2976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1268978535}
   - component: {fileID: 1268978536}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fail4
   m_TagString: FailCollider
   m_Icon: {fileID: 0}
@@ -3053,7 +3053,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1277705003}
   - component: {fileID: 1277705004}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fail3
   m_TagString: FailCollider
   m_Icon: {fileID: 0}
@@ -3395,7 +3395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1342485737}
   - component: {fileID: 1342485736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NorthGoal
   m_TagString: GoalCollider
   m_Icon: {fileID: 0}
@@ -3434,7 +3434,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -4.6095095}
+  m_Offset: {x: 0, y: -2.8402138}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3445,7 +3445,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 8.1369915}
+  m_Size: {x: 80, y: 4.5984}
   m_EdgeRadius: 0
 --- !u!4 &1342485737
 Transform:
@@ -3929,7 +3929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1532472093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4002,7 +4002,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 542.1, y: -198.6}
+  m_AnchoredPosition: {x: 542.1, y: 0}
   m_SizeDelta: {x: 340.97, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1572152705
@@ -4569,7 +4569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -640.2, y: 73}
+  m_AnchoredPosition: {x: -640.2, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1707455967
@@ -5325,7 +5325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2047117313}
   - component: {fileID: 2047117312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EastGoal
   m_TagString: GoalCollider
   m_Icon: {fileID: 0}
@@ -5364,7 +5364,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -4.0569906, y: 0}
+  m_Offset: {x: -3.1068, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5375,7 +5375,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.192884, y: 50}
+  m_Size: {x: 7.2925034, y: 50}
   m_EdgeRadius: 0
 --- !u!4 &2047117313
 Transform:
@@ -5513,7 +5513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2065812344
 MonoBehaviour:
   m_ObjectHideFlags: 0

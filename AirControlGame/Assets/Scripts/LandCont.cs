@@ -115,11 +115,6 @@ public class LandCont : MonoBehaviour
             Debug.Log("Hitbox Hit");
             gameObject.GetComponent<SplineGen>().inAir = false;
         }
-
-        if(other.gameObject.CompareTag("GoalCollider"))
-        {
-            inAir = true;
-        }
     }
 
     public void LandPlane(Collider2D collision, Vector3 centerP)
