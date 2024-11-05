@@ -1421,9 +1421,9 @@ GameObject:
   m_Component:
   - component: {fileID: 727751578}
   - component: {fileID: 727751577}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SouthGoal
-  m_TagString: Untagged
+  m_TagString: GoalCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1627,7 +1627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 958139660}
   - component: {fileID: 958139661}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fail2
   m_TagString: FailCollider
   m_Icon: {fileID: 0}
@@ -1839,7 +1839,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1202949474}
   - component: {fileID: 1202949475}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fail1
   m_TagString: FailCollider
   m_Icon: {fileID: 0}
@@ -1916,9 +1916,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1206267073}
   - component: {fileID: 1206267072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WestGoal
-  m_TagString: Untagged
+  m_TagString: GoalCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1955,7 +1955,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.1473265, y: 0}
+  m_Offset: {x: 4.6000605, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1966,7 +1966,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.294653, y: 50}
+  m_Size: {x: 10.389185, y: 50}
   m_EdgeRadius: 0
 --- !u!4 &1206267073
 Transform:
@@ -1993,7 +1993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1268978535}
   - component: {fileID: 1268978536}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fail4
   m_TagString: FailCollider
   m_Icon: {fileID: 0}
@@ -2070,7 +2070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1277705003}
   - component: {fileID: 1277705004}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fail3
   m_TagString: FailCollider
   m_Icon: {fileID: 0}
@@ -2178,9 +2178,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1342485737}
   - component: {fileID: 1342485736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NorthGoal
-  m_TagString: Untagged
+  m_TagString: GoalCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4414,9 +4414,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2047117313}
   - component: {fileID: 2047117312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EastGoal
-  m_TagString: Untagged
+  m_TagString: GoalCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

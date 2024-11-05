@@ -24,6 +24,9 @@ public class LandCont : MonoBehaviour
     public Material pathMat;
     public Mesh mesh;
 
+    public bool onEdge = false;
+    public bool alarmActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +56,33 @@ public class LandCont : MonoBehaviour
             }
             gameObject.GetComponent<MoveAlongSpline>().speed = altSpeed;
             gameObject.transform.localScale = new Vector3(altScale, altScale, altScale);
+        }
+
+        if(onEdge == true)
+        {
+            Debug.DrawLine(transform.position, transform.position + transform.right * 10f);
+            RaycastHit2D hit1 = Physics2D.Raycast(transform.position, transform.right, 10f, LayerMask.GetMask("FailLayer"));
+            if (hit1.collider != null)
+            {
+                if (hit1.collider.gameObject.CompareTag("FailCollider"))
+                {
+                    if (alarmActive == false)
+                    {
+                        gameObject.GetComponent<SplineGen>().AlarmOn();
+                        alarmActive = true;
+                    }
+                }
+                else
+                {
+                    gameObject.GetComponent<SplineGen>().AlarmOff();
+                    alarmActive = false;
+                }
+            }
+            else
+            {
+                gameObject.GetComponent<SplineGen>().AlarmOff();
+                alarmActive = false;
+            }
         }
     }
 
@@ -114,6 +144,28 @@ public class LandCont : MonoBehaviour
         {
             Debug.Log("Hitbox Hit");
             gameObject.GetComponent<SplineGen>().inAir = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("GoalCollider"))
+        {
+            if (landing == false)
+            {
+                onEdge = true;
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("GoalCollider"))
+        {
+            if (landing == false)
+            {
+                onEdge = false;
+            }
         }
     }
 
