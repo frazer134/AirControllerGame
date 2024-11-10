@@ -118,37 +118,40 @@ public class SplineGen : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Plane"))
+        if (collision.otherCollider == gameObject.GetComponent<BoxCollider2D>())
         {
-            if (started == true && collision.gameObject.GetComponent<SplineGen>().started == true)
+            if (collision.gameObject.CompareTag("Plane"))
             {
-                if (inAir == true && collision.gameObject.GetComponent<SplineGen>().inAir == true)
+                if (started == true && collision.gameObject.GetComponent<SplineGen>().started == true)
                 {
-                    gameOver = true;
-                    Debug.Log("Plane Collision");
-                    var camera = GameObject.Find("Main Camera");
-                    camera.GetComponent<MouseCont>().StopGame();
-                    camera.GetComponent<CameraCont>().EndGame(gameObject);
-                }
-                else if (inAir == false && collision.gameObject.GetComponent<SplineGen>().inAir == false)
-                {
-                    gameOver=true;
-                    Debug.Log("Plane Collision");
-                    var camera = GameObject.Find("Main Camera");
-                    camera.GetComponent<MouseCont>().StopGame();
-                    camera.GetComponent<CameraCont>().EndGame(gameObject);
+                    if (inAir == true && collision.gameObject.GetComponent<SplineGen>().inAir == true)
+                    {
+                        gameOver = true;
+                        Debug.Log("Plane Collision");
+                        var camera = GameObject.Find("Main Camera");
+                        camera.GetComponent<MouseCont>().StopGame();
+                        camera.GetComponent<CameraCont>().EndGame(gameObject);
+                    }
+                    else if (inAir == false && collision.gameObject.GetComponent<SplineGen>().inAir == false)
+                    {
+                        gameOver = true;
+                        Debug.Log("Plane Collision");
+                        var camera = GameObject.Find("Main Camera");
+                        camera.GetComponent<MouseCont>().StopGame();
+                        camera.GetComponent<CameraCont>().EndGame(gameObject);
+                    }
                 }
             }
-        }
 
-        if(collision.gameObject.CompareTag("FailCollider"))
-        {
-            if (inAir == true)
+            if (collision.gameObject.CompareTag("FailCollider"))
             {
-                gameOver = true;
-                var camera = GameObject.Find("Main Camera");
-                camera.GetComponent<MouseCont>().StopGame();
-                camera.GetComponent<CameraCont>().EndGame(gameObject);
+                if (inAir == true)
+                {
+                    gameOver = true;
+                    var camera = GameObject.Find("Main Camera");
+                    camera.GetComponent<MouseCont>().StopGame();
+                    camera.GetComponent<CameraCont>().EndGame(gameObject);
+                }
             }
         }
     }
