@@ -132,67 +132,73 @@ public class TakeoffCont : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        var name = collision.gameObject.name;
+        if (collision.otherCollider == gameObject.GetComponent<BoxCollider2D>())
+        {
+            var name = collision.gameObject.name;
 
-        if (name == "NorthGoal" && goal == 0)
-        {
-            //Debug.Log("Takeoff Score");
-            //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
-            onGoal = true;
-            if (inAir == true)
+            if (name == "NorthGoal" && goal == 0)
             {
-                radioFlash.SetActive(true);
-                gameObject.GetComponent<AudioSource>().clip = onGoalClip;
-                gameObject.GetComponent<AudioSource>().Play();
+                //Debug.Log("Takeoff Score");
+                //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+                onGoal = true;
+                if (inAir == true)
+                {
+                    radioFlash.SetActive(true);
+                    gameObject.GetComponent<AudioSource>().clip = onGoalClip;
+                    gameObject.GetComponent<AudioSource>().Play();
+                }
             }
-        }
-        else if(name == "EastGoal" && goal == 1)
-        {
-            //Debug.Log("Takeoff Score");
-            //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
-            onGoal = true;
-            if (inAir == true)
+            else if (name == "EastGoal" && goal == 1)
             {
-                radioFlash.SetActive(true);
-                gameObject.GetComponent<AudioSource>().clip = onGoalClip;
-                gameObject.GetComponent<AudioSource>().Play();
+                //Debug.Log("Takeoff Score");
+                //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+                onGoal = true;
+                if (inAir == true)
+                {
+                    radioFlash.SetActive(true);
+                    gameObject.GetComponent<AudioSource>().clip = onGoalClip;
+                    gameObject.GetComponent<AudioSource>().Play();
+                }
             }
-        }
-        else if(name == "SouthGoal" && goal == 2)
-        {
-            //Debug.Log("Takeoff Score");
-            //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
-            onGoal = true;
-            if (inAir == true)
+            else if (name == "SouthGoal" && goal == 2)
             {
-                radioFlash.SetActive(true);
-                gameObject.GetComponent<AudioSource>().clip = onGoalClip;
-                gameObject.GetComponent<AudioSource>().Play();
+                //Debug.Log("Takeoff Score");
+                //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+                onGoal = true;
+                if (inAir == true)
+                {
+                    radioFlash.SetActive(true);
+                    gameObject.GetComponent<AudioSource>().clip = onGoalClip;
+                    gameObject.GetComponent<AudioSource>().Play();
+                }
             }
-        }
-        else if(name == "WestGoal" && goal == 3)
-        {
-            //Debug.Log("Takeoff Score");
-            //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
-            onGoal = true;
-            if (inAir == true)
+            else if (name == "WestGoal" && goal == 3)
             {
-                radioFlash.SetActive(true);
-                gameObject.GetComponent<AudioSource>().clip = onGoalClip;
-                gameObject.GetComponent<AudioSource>().Play();
+                //Debug.Log("Takeoff Score");
+                //gameObject.GetComponent<SplineGen>().PlaneDestroyed();
+                onGoal = true;
+                if (inAir == true)
+                {
+                    radioFlash.SetActive(true);
+                    gameObject.GetComponent<AudioSource>().clip = onGoalClip;
+                    gameObject.GetComponent<AudioSource>().Play();
+                }
             }
-        }
-        else if(collision.gameObject.CompareTag("GoalCollider"))
-        {
-            onEdge = true;
+            else if (collision.gameObject.CompareTag("GoalCollider"))
+            {
+                onEdge = true;
+            }
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("GoalCollider"))
+        if (collision.otherCollider == gameObject.GetComponent<BoxCollider2D>())
         {
-            onEdge = false;
+            if (collision.gameObject.CompareTag("GoalCollider"))
+            {
+                onEdge = false;
+            }
         }
     }
 

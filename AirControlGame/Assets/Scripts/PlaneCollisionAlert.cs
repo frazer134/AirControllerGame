@@ -16,6 +16,7 @@ public class PlaneCollisionAlert : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /**
         Vector3 off1 = new Vector3(0, 0.5f, 0);
         RaycastHit2D hit1 = Physics2D.Raycast(planeMaster.transform.position + off1, (planeMaster.transform.position + off1) + planeMaster.transform.right, 60f, LayerMask.GetMask("DetectLayer"));
         RaycastHit2D hit2 = Physics2D.Raycast(planeMaster.transform.position - off1, (planeMaster.transform.position - off1) + planeMaster.transform.right, 60f, LayerMask.GetMask("DetectLayer"));
@@ -70,6 +71,34 @@ public class PlaneCollisionAlert : MonoBehaviour
         else
         {
             planeMaster.GetComponent<SplineGen>().AlarmOff();
+        }
+        **/
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.otherCollider == gameObject.GetComponent<PolygonCollider2D>())
+        {
+            if(collision.gameObject.CompareTag("PlanePCollider"))
+            {
+                if (planeMaster.GetComponent<SplineGen>().inAir == true && collision.gameObject.GetComponent<PlaneCollisionAlert>().planeMaster.GetComponent<SplineGen>().inAir == true)
+                {
+                    Debug.Log("AlarmON");
+                    planeMaster.GetComponent<SplineGen>().AlarmOn();
+                }
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision1)
+    {
+        if(collision1.otherCollider == gameObject.GetComponent<PolygonCollider2D>())
+        {
+            if(collision1.gameObject.CompareTag("PlanePCollider"))
+            {
+                Debug.Log("AlarmOFF");
+                planeMaster.GetComponent <SplineGen>().AlarmOff();
+            }
         }
     }
 }

@@ -161,7 +161,6 @@ public class SplineGen : MonoBehaviour
         if(collision.gameObject.CompareTag("GoalCollider"))
         {
             AlarmOff();
-            inAir = true;
         }
     }
 

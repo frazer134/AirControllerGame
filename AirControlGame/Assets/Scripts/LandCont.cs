@@ -88,7 +88,6 @@ public class LandCont : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (longLand == true)
         {
             if (collision.CompareTag("ApproachLong"))
@@ -149,22 +148,28 @@ public class LandCont : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("GoalCollider"))
+        if (collision.otherCollider == gameObject.GetComponent<BoxCollider2D>())
         {
-            if (landing == false)
+            if (collision.gameObject.CompareTag("GoalCollider"))
             {
-                onEdge = true;
+                if (landing == false)
+                {
+                    onEdge = true;
+                }
             }
         }
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("GoalCollider"))
+        if (other.otherCollider == gameObject.GetComponent<BoxCollider2D>())
         {
-            if (landing == false)
+            if (other.gameObject.CompareTag("GoalCollider"))
             {
-                onEdge = false;
+                if (landing == false)
+                {
+                    onEdge = false;
+                }
             }
         }
     }
