@@ -382,7 +382,7 @@ MonoBehaviour:
   speed: 2
   scale: 2
   landClip: {fileID: 8300000, guid: 913ffeb85589e3d4fbdf6fc51a22a103, type: 3}
-  pathMat: {fileID: 2100000, guid: 5c2787d4d3ac6664fa242fcd67c8a797, type: 2}
+  pathMat: {fileID: 2100000, guid: d6476eebf48300c4ba26ee9f8f2439a0, type: 2}
   mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
   onEdge: 0
   alarmActive: 0
