@@ -595,14 +595,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2449202377850680711}
-  m_LocalRotation: {x: -0, y: -0, z: -0.6854078, w: 0.7281594}
-  m_LocalPosition: {x: 16.65, y: -1.57, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.50189865, w: 0.8649264}
+  m_LocalPosition: {x: 17.51, y: -1.58, z: 0}
   m_LocalScale: {x: 0.30667868, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4596977834052008818}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -86.535}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60.251}
 --- !u!114 &5848050132173839859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2131,14 +2131,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5603894530803516565}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7207652, w: 0.69317937}
-  m_LocalPosition: {x: 17.14, y: 2.13, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.84042615, w: 0.54192615}
+  m_LocalPosition: {x: 18.01, y: 2.22, z: 0}
   m_LocalScale: {x: 0.40119952, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5126205291218017284}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -92.235}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -114.37}
 --- !u!114 &5957696950319215587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3843,7 +3843,7 @@ MonoBehaviour:
   - m_EditModeType: 1
     m_Knots:
     - Position:
-        x: 12.5
+        x: 13.727894
         y: 0
         z: 0
       TangentIn:
@@ -3974,63 +3974,63 @@ MonoBehaviour:
       m_DistanceToInterpolation:
       - Distance: 0
         T: 0
-      - Distance: 0.118644744
+      - Distance: 0.122923575
         T: 0.03448276
-      - Distance: 0.21263789
+      - Distance: 0.22935174
         T: 0.06896552
-      - Distance: 0.28479373
+      - Distance: 0.32149327
         T: 0.10344828
-      - Distance: 0.33791897
+      - Distance: 0.4015522
         T: 0.13793103
-      - Distance: 0.37482306
+      - Distance: 0.47173262
         T: 0.1724138
-      - Distance: 0.39831644
+      - Distance: 0.53424156
         T: 0.20689656
-      - Distance: 0.41120952
+      - Distance: 0.5912871
         T: 0.2413793
-      - Distance: 0.41630968
+      - Distance: 0.6450715
         T: 0.27586207
-      - Distance: 0.4164363
+      - Distance: 0.6978049
         T: 0.31034482
-      - Distance: 0.41849342
+      - Distance: 0.7516887
         T: 0.3448276
-      - Distance: 0.419926
+      - Distance: 0.80893266
         T: 0.37931034
-      - Distance: 0.4219936
+      - Distance: 0.87173975
         T: 0.41379312
-      - Distance: 0.43030098
+      - Distance: 0.94231665
         T: 0.44827586
-      - Distance: 0.4476729
+      - Distance: 1.0228673
         T: 0.4827586
-      - Distance: 0.4769219
+      - Distance: 1.1156002
         T: 0.51724136
-      - Distance: 0.5208572
+      - Distance: 1.2227174
         T: 0.55172414
-      - Distance: 0.58228976
+      - Distance: 1.3464284
         T: 0.5862069
-      - Distance: 0.66403013
+      - Distance: 1.4889351
         T: 0.62068963
-      - Distance: 0.76888704
+      - Distance: 1.6524444
         T: 0.6551724
-      - Distance: 0.89967114
+      - Distance: 1.839164
         T: 0.6896552
-      - Distance: 1.059191
+      - Distance: 2.051295
         T: 0.7241379
-      - Distance: 1.2502582
+      - Distance: 2.291047
         T: 0.7586207
-      - Distance: 1.4756823
+      - Distance: 2.5606244
         T: 0.79310346
-      - Distance: 1.7382718
+      - Distance: 2.8622324
         T: 0.82758623
-      - Distance: 2.0408385
+      - Distance: 3.1980765
         T: 0.86206895
-      - Distance: 2.3861887
+      - Distance: 3.5703642
         T: 0.8965517
-      - Distance: 2.777137
+      - Distance: 3.9812987
         T: 0.9310345
-      - Distance: 3.216489
+      - Distance: 4.433087
         T: 0.9655172
-      - Distance: 3.7070575
+      - Distance: 4.927934
         T: 1
     - Mode: 4
       Tension: 0.5
@@ -4524,7 +4524,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.3760271, y: -0.000000059604645}
+  m_Offset: {x: 2.0157104, y: -0.000000059604645}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4535,7 +4535,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 22.12485, y: 0.05557978}
+  m_Size: {x: 23.404217, y: 0.05557978}
   m_EdgeRadius: 0
 --- !u!1 &8462998805989297860
 GameObject:
