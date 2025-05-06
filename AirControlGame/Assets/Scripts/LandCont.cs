@@ -229,8 +229,9 @@ public class LandCont : MonoBehaviour
     private Vector3 FindCenterPoint(GameObject center)
     {
         var splineC = center.GetComponent<SplineContainer>().Spline;
+        var localObj = center.transform.worldToLocalMatrix.MultiplyPoint(gameObject.transform.position);
 
-        SplineUtility.GetNearestPoint(splineC, gameObject.transform.position, out float3 nearest, out float t);
+        SplineUtility.GetNearestPoint(splineC, localObj, out float3 nearest, out float t, 20);
 
         Vector3 knot = new Vector3(nearest.x, nearest.y, 0f);
         //knot = center.transform.worldToLocalMatrix * knot;
