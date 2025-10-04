@@ -1211,7 +1211,7 @@ MonoBehaviour:
   tPlane: {fileID: 0}
   takeoffQueue: {fileID: 704431645}
   grabbedPlane: 0
-  pointDistance: 5
+  pointDistance: 2
   tempS: {fileID: 0}
 --- !u!114 &519420034
 MonoBehaviour:

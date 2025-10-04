@@ -21,7 +21,7 @@ public class MouseCont : MonoBehaviour
     public GameObject tPlane;
     public GameObject takeoffQueue;
     public bool grabbedPlane = false;
-    public float pointDistance = 5f;
+    public float pointDistance = 2f;
 
     public delegate void PauseGame();
     public static event PauseGame pauseG;
